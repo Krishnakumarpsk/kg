@@ -467,3 +467,17 @@ const REVIEWS = [
   });
 })();
 
+
+// DTF box: play the GIF clips one by one (only the current + next clip are loaded)
+document.querySelectorAll('[data-gifs]').forEach(box => {
+  const n = +box.dataset.gifs, img = box.querySelector('img');
+  const src = i => `gif/clip_${String(i + 1).padStart(2, '0')}.gif`;
+  let i = 0, pre = new Image();
+  pre.src = src(1);
+  setInterval(() => {
+    i = (i + 1) % n;
+    img.classList.remove('active');
+    setTimeout(() => { img.src = src(i); img.onload = () => img.classList.add('active'); }, 400);
+    pre = new Image(); pre.src = src((i + 1) % n);
+  }, 5000);
+});

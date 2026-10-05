@@ -7,14 +7,16 @@
   <meta name="description" content="Kavisuga Group – Linga Bhairavi Graphics, Kavisuga Fashions Private Limited and Adiyogi Design Academy, Tiruppur.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-  <link rel="stylesheet" href="css/style.css?v=70">
+  <link rel="stylesheet" href="css/style.css?v=145">
 </head>
 <body>
 
 <!-- ================= HERO / HEADER ================= -->
 <header class="hero" id="home">
+  <svg class="hero-flow" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%"/></svg>
   <div class="bni-badge"><img src="assets/logos/bni-member.png" alt="Proud BNI Member"></div>
 
   <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
@@ -55,7 +57,7 @@
     </div>
   </div>
 
-  <h1 class="pillars">DESIGN <span>•</span> MANUFACTURE <span>•</span> EDUCATE</h1>
+  <h1 class="pillars"><b class="pw">DESIGN</b> <span>•</span> <b class="pw">MANUFACTURE</b> <span>•</span> <b class="pw">EDUCATE</b></h1>
 
   <p class="hero-intro">
     Kavisuga Group of companies Linga Bhairavi Graphics, Kavisuga Fashions Private Limited and Adiyogi Design Academy,
@@ -77,7 +79,7 @@
     <a href="#lbg" class="c-card reveal">
       <img src="assets/logos/lbg.jpeg" alt="Linga Bhairavi Graphics">
     </a>
-    <a href="#ksf" class="c-card reveal">
+    <a href="#kavisuga" class="c-card reveal">
       <img src="assets/logos/kavisuga-fashions.jpeg" alt="Kavisuga Fashions Private Limited">
     </a>
     <a href="#ada" class="c-card reveal">
@@ -88,6 +90,11 @@
   <h3 class="sub-tagline">A COMPLETE TEXTILE ECOSYSTEM BUILT WITH PURPOSE</h3>
   <p class="eco-text">Building Export-Ready Textile Graphics, Dependable Print Solutions and Industry<br>
     Ready Design Talent with Precision and Purpose</p>
+  <div class="exp-stats">
+    <div class="exp-card" tabindex="0"><p><strong data-count="22">0</strong><em>+</em></p><span>Years of Experience</span></div>
+    <div class="exp-card" tabindex="0"><p><strong data-count="100">0</strong><em>+</em></p><span>Happy Customers</span></div>
+    <div class="exp-card" tabindex="0"><p><strong data-count="1">0</strong><em> Lakh+</em></p><span>Designs Delivered</span></div>
+  </div>
 </section>
 
 
@@ -103,15 +110,24 @@
         solutions for the garment industry.</p>
     </div>
   </div>
-  <div class="biz-body">
-    <div class="service-slider" data-slider>
-      <div class="slides">
-        <img src="assets/services/graphic-design.jpeg" alt="Graphic Design">
-        <img src="assets/services/textile-design.jpeg" alt="Textile Design">
-        <img src="assets/services/screen-print.jpeg" alt="Screen Print Artwork">
+  <div class="biz-body lbg-body">
+    <div class="lbg-image-section">
+      <div class="lbg-slider">
+        <div class="lbg-track">
+          <img src="assets/services/graphic-design.jpeg" alt="Graphic Design artwork" loading="lazy">
+          <img src="assets/services/textile-design.jpeg" alt="Textile Design artwork" loading="lazy">
+          <img src="assets/services/screen-print.jpeg" alt="Screen Print artwork" loading="lazy">
+          <img src="images/service/sv-textile-graphic.jpg?v=1791033499" alt="Textile Graphic Designing">
+          <img src="images/service/sv-screen-print.jpg?v=1791033499" alt="Screen Print Colour Separation">
+          <img src="images/service/sv-digital-artwork.jpg?v=1791033499" alt="Digital Artwork">
+          <img src="images/service/sv-photo-cmyk.jpg?v=1791033499" alt="Photo Print &amp; CMYK Separation">
+          <img src="images/service/sv-dtf.jpg?v=1791033499" alt="DTF Artwork">
+          <img src="images/service/sv-production-ready.jpg?v=1791033499" alt="Production-Ready Garment Designs">
+        </div>
+        <div class="lbg-dots"></div>
       </div>
     </div>
-    <div class="biz-list">
+    <div class="biz-list plain">
       <h3>Core Services</h3>
       <ul>
         <li>Textile Graphic Designing</li>
@@ -126,42 +142,40 @@
 </section>
 
 <!-- ================= KAVISUGA FASHIONS ================= -->
-<section class="biz" id="ksf">
-  <div class="biz-head grey">
-    <div class="biz-logo"><img src="assets/logos/kavisuga-fashions.jpeg" alt="Kavisuga Fashions logo"></div>
-    <div class="biz-intro">
-      <h2>KAVISUGA FASHIONS PRIVATE LIMITED</h2>
-      <p class="lead">“CARING FOR TOMORROW”</p>
-      <p class="big">Started in 2025 to extend design expertise into manufacturing, serving export garment
-        requirements with quality materials and reliable finishing.</p>
-    </div>
-  </div>
-  <div class="biz-body">
-    <div class="dtf-box">
-      <div class="dtf-slides dtf-gif" data-gifs="15">
-        <img src="gif/clip_01.gif" alt="DTF machine in action" class="active">
+<section class="ksf2" id="kavisuga">
+  <div class="ksf2-head">
+    <div class="ksf2-row">
+      <div class="ksf2-logo"><img src="assets/logos/kavisuga-fashions.jpeg" alt="Kavisuga Fashions logo"></div>
+      <div class="ksf2-intro">
+        <h2>KAVISUGA FASHIONS PRIVATE LIMITED</h2>
+        <p class="ksf2-lead">&ldquo;CARING FOR TOMORROW&rdquo;</p>
+        <p class="ksf2-text">Started in 2025 to extend design expertise into manufacturing, serving export garment requirements with quality materials and reliable finishing.</p>
       </div>
     </div>
-    <div class="biz-list">
+  </div>
+  <div class="ksf2-row">
+    <div class="ksf2-media">
+      <div class="ksf2-gif dtf-gif" data-gifs="15">
+        <img src="gif/clip_01.gif" alt="DTF machine in action" class="active">
+      </div>
+      <div class="ksf2-certs">
+        <img src="assets/certs/oeko-tex.jpg" alt="OEKO-TEX" tabindex="0">
+        <img src="assets/certs/gots.jpg" alt="GOTS - Global Organic Textile Standard" tabindex="0">
+        <img src="assets/certs/sgs.jpg" alt="SGS" tabindex="0">
+        <img src="assets/certs/ags.png" alt="AGS" tabindex="0">
+      </div>
+    </div>
+    <div class="ksf2-focus">
       <h3>Focus Areas</h3>
       <ul>
-        <li>DTF Sticker Manufacturing</li>
-        <li>Kids Garments</li>
-        <li>Corporate &amp; School Uniforms</li>
-        <li>Custom Apparel</li>
-        <li>Promotional Garments</li>
+        <li tabindex="0">DTF Sticker Manufacturing</li>
+        <li tabindex="0">Kids Garments</li>
+        <li tabindex="0">Corporate &amp; School Uniforms</li>
+        <li tabindex="0">Custom Apparel</li>
+        <li tabindex="0">Promotional Garments</li>
       </ul>
+      <p class="ksf2-cert-text" tabindex="0">Export-focused DTF output using quality materials and OEKO-TEX certified inks, with attention to colour, detailing, adhesion and finishing.</p>
     </div>
-  </div>
-  <div class="biz-body certs-row">
-    <div class="certs">
-      <img src="assets/certs/oeko-tex.jpg" alt="OEKO-TEX">
-      <img src="assets/certs/gots.jpg" alt="GOTS - Global Organic Textile Standard">
-      <img src="assets/certs/sgs.jpg" alt="SGS">
-      <img src="assets/certs/ags.png" alt="AGS">
-    </div>
-    <p class="cert-text">Export-focused DTF output using quality materials and OEKO-TEX certified inks, with attention
-      to colour, detailing, adhesion and finishing.</p>
   </div>
 </section>
 
@@ -199,7 +213,7 @@
   <div class="ada-foot">
     <div>
       <p class="red-small">More than software training</p>
-      <p class="ada-line"><span>Professional thinking.</span> <span>Industry workflow.</span> <span>Production understanding.</span></p>
+      <p class="ada-line"><span tabindex="0">Professional thinking.</span> <span tabindex="0">Industry workflow.</span> <span tabindex="0">Production understanding.</span></p>
     </div>
     <div class="stat-pill"><strong data-count="1000">0</strong><strong>+</strong><span>students trained</span></div>
   </div>
@@ -239,15 +253,15 @@
   <div class="arrows">
     <div class="arrow-col">
       <div class="arrow"><strong data-vcount="1000">0</strong><span>PROFESSIONAL DESIGNERS</span></div>
-      <p>Cultivating a new generation of design professionals who embody excellence and innovation.</p>
+      <p tabindex="0">Cultivating a new generation of design professionals who embody excellence and innovation.</p>
     </div>
     <div class="arrow-col">
       <div class="arrow"><strong data-vcount="10000">0</strong><span>FAMILIES</span></div>
-      <p>Providing sustainable livelihoods and fostering community growth through our operations.</p>
+      <p tabindex="0">Providing sustainable livelihoods and fostering community growth through our operations.</p>
     </div>
     <div class="arrow-col">
       <div class="arrow"><strong data-vcount="1" data-suffix=" Billion">0</strong><span>BUSINESS VISION</span></div>
-      <p>Building a Rs. 1 billion / Rs. 100 crore enterprise and becoming a leading force over the next decade.</p>
+      <p tabindex="0">Building a Rs. 1 billion / Rs. 100 crore enterprise and becoming a leading force over the next decade.</p>
     </div>
   </div>
   <h2 class="sec-title">Mission</h2>
@@ -259,8 +273,25 @@
 <!-- ================= SERVICES ================= -->
 <section class="svs" id="services">
   <div class="svs-head"><span>WHAT WE DO</span><h2>Our <b>Services</b></h2><p>Production-ready artwork for every garment, from concept to final print file.</p></div>
-  <div class="svm">
-    <div class="svm-track"><img src="images/service/sv-textile-graphic.jpg" alt="Textile Graphic Designing"><img src="images/service/sv-screen-print.jpg" alt="Screen Print Colour Separation"><img src="images/service/sv-digital-artwork.jpg" alt="Digital Artwork Creation"><img src="images/service/sv-photo-cmyk.jpg" alt="Photo Print &amp; CMYK Separation"><img src="images/service/sv-dtf.jpg" alt="DTF Artwork"><img src="images/service/sv-production-ready.jpg" alt="Production-Ready Garment Designs"><img src="images/service/sv-textile-graphic.jpg" alt="" aria-hidden="true"><img src="images/service/sv-screen-print.jpg" alt="" aria-hidden="true"><img src="images/service/sv-digital-artwork.jpg" alt="" aria-hidden="true"><img src="images/service/sv-photo-cmyk.jpg" alt="" aria-hidden="true"><img src="images/service/sv-dtf.jpg" alt="" aria-hidden="true"><img src="images/service/sv-production-ready.jpg" alt="" aria-hidden="true"></div>
+  <div class="svc-grid">
+    <article class="svc-card light">
+      <img src="images/service/sv-textile-graphic.jpg?v=1791033499" alt="Textile Graphic Designing">
+    </article>
+    <article class="svc-card dark">
+      <img src="images/service/sv-screen-print.jpg?v=1791033499" alt="Screen Print Colour Separation">
+    </article>
+    <article class="svc-card dark">
+      <img src="images/service/sv-digital-artwork.jpg?v=1791033499" alt="Digital Artwork Creation">
+    </article>
+    <article class="svc-card light">
+      <img src="images/service/sv-photo-cmyk.jpg?v=1791033499" alt="Photo Print &amp; CMYK Separation">
+    </article>
+    <article class="svc-card dark">
+      <img src="images/service/sv-dtf.jpg?v=1791033499" alt="DTF Artwork">
+    </article>
+    <article class="svc-card light">
+      <img src="images/service/sv-production-ready.jpg?v=1791033499" alt="Production-Ready Garment Designs">
+    </article>
   </div>
 </section>
 
@@ -394,7 +425,7 @@
       <h4>Our Companies</h4>
       <ul>
         <li><a href="#lbg">Linga Bhairavi Graphics</a></li>
-        <li><a href="#ksf">Kavisuga Fashions Pvt Ltd</a></li>
+        <li><a href="#kavisuga">Kavisuga Fashions Pvt Ltd</a></li>
         <li><a href="#ada">Adiyogi Design Academy</a></li>
       </ul>
     </div>
@@ -428,6 +459,6 @@
   </div>
 </div>
 
-<script src="js/script.js?v=31"></script>
+<script src="js/script.js?v=61"></script>
 </body>
 </html>

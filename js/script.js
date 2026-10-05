@@ -1,3 +1,10 @@
+/* always open the home page at the top (browsers restore the old scroll position on reload) */
+if (!location.hash) {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  addEventListener('load', () => window.scrollTo(0, 0));
+}
+
 // Mobile menu
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.main-nav');
@@ -40,7 +47,7 @@ const io = new IntersectionObserver(entries => {
     io.unobserve(e.target);
   });
 }, { threshold: 0.2 });
-document.querySelectorAll('.reveal, [data-count]').forEach(el => io.observe(el));
+document.querySelectorAll('.reveal, [data-count]:not(.exp-card [data-count])').forEach(el => io.observe(el));
 
 // Global reach map – light real map, flights from Tiruppur drawn progressively like a live flight tracker
 (function flightMap() {
@@ -408,7 +415,7 @@ const REVIEWS = [
 (function stickyNav() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
-  const onScroll = () => document.body.classList.toggle('nav-fixed', window.scrollY > hero.offsetHeight - 60);
+  const onScroll = () => document.body.classList.toggle('nav-fixed', window.scrollY > hero.offsetHeight - 140);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
@@ -481,3 +488,364 @@ document.querySelectorAll('[data-gifs]').forEach(box => {
     pre = new Image(); pre.src = src((i + 1) % n);
   }, 5000);
 });
+
+/* hero border: 4cm moving line */
+(function () {
+  const r = document.querySelector('.hero-flow rect');
+  if (!r) return;
+  const size = () => {
+    const per = r.getTotalLength();
+    r.style.strokeDasharray = '4cm ' + per + 'px';
+    r.style.setProperty('--per', per + 'px');
+  };
+  size();
+  addEventListener('resize', size);
+})();
+
+/* hero intro: sentence fades in after the pillars, company names in bold */
+(function () {
+  const p = document.querySelector('.hero .hero-intro');
+  if (!p) return;
+  const names = ['Linga Bhairavi Graphics', 'Kavisuga Fashions Private Limited', 'Adiyogi Design Academy'];
+  const words = p.textContent.trim().split(/\s+/);
+  const bold = new Array(words.length).fill(false);
+  names.forEach(name => {
+    const nw = name.split(' ');
+    for (let i = 0; i + nw.length <= words.length; i++) {
+      if (nw.every((w, j) => words[i + j].replace(/,$/, '') === w)) nw.forEach((_, j) => { bold[i + j] = true; });
+    }
+  });
+  // every letter is laid out up front (hidden) so the paragraph never jumps while typing
+  const chars = w => w.split('').map(c => `<span class="tc">${c}</span>`).join('');
+  p.innerHTML = words.map((w, i) => `<span class="tw">${bold[i] ? '<b>' + chars(w) + '</b>' : chars(w)}</span>`)
+    .join('<span class="tc"> </span>');
+  const all = p.querySelectorAll('.tc');
+  const done = () => { window.heroDone = true; document.dispatchEvent(new Event('hero-done')); };
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { all.forEach(c => c.classList.add('on')); done(); return; }
+  // no typing: the whole sentence fades in right after the heading (~2s), together with the cards
+  setTimeout(() => { p.classList.add('in'); all.forEach(c => c.classList.add('on')); done(); }, 2000);
+})();
+
+/* pillars: split DESIGN / MANUFACTURE / EDUCATE into letters, one word after another */
+(function () {
+  const words = document.querySelectorAll('.hero .pillars .pw');
+  const dots = document.querySelectorAll('.hero .pillars > span');
+  let t = 0.15;
+  words.forEach((w, wi) => {
+    const letters = w.textContent.split('');
+    w.innerHTML = letters.map((c, i) =>
+      `<i class="ch" style="--d:${(t + i * 0.03).toFixed(2)}s;--g:${(4 + wi * 0.5 + i * 0.05).toFixed(2)}s;animation-delay:${(t + i * 0.03).toFixed(2)}s">${c}</i>`
+    ).join('');
+    const end = t + letters.length * 0.03 + 0.35;
+    w.style.setProperty('--ul', end.toFixed(2) + 's');
+    w.classList.add('shine');
+    if (dots[wi]) dots[wi].style.animationDelay = end.toFixed(2) + 's, ' + (end + 0.6).toFixed(2) + 's';
+    t = end + 0.05;
+  });
+})();
+
+/* companies section: replay its animations every time it scrolls into view */
+document.querySelectorAll('.companies').forEach(sec => new IntersectionObserver(en => {
+  if (!en[0].isIntersecting) sec.classList.remove('co-in'); // reset once fully off screen so it plays again next time
+}, { threshold: 0 }).observe(sec));
+/* on first load the cards wait for the home heading, then come in with the sentence */
+if (!document.querySelector('.hero .hero-intro')) window.heroDone = true;
+document.querySelectorAll('.companies').forEach(sec => {
+  let seen = false;
+  const count = () => sec.querySelectorAll('.exp-card [data-count]').forEach(el => {
+    const end = +el.dataset.count, t0 = performance.now();
+    const step = now => { const k = Math.min(1, (now - t0) / 1400); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+  const play = () => { if (seen && window.heroDone && !sec.classList.contains('co-in')) { sec.classList.add('co-in'); count(); } };
+  document.addEventListener('hero-done', play);
+  new IntersectionObserver(en => { seen = en[0].isIntersecting; play(); }, { threshold: .2 }).observe(sec);
+});
+
+/* company headers: put each logo in a card and replay the header animation every time it scrolls into view */
+document.querySelectorAll('.biz-head').forEach(head => {
+  const logo = head.querySelector('.biz-logo');
+  if (logo && !logo.querySelector('.logo-card')) {
+    const card = document.createElement('div');
+    card.className = 'logo-card';
+    card.append(...logo.childNodes);
+    logo.append(card);
+  }
+  new IntersectionObserver(en => { if (en[0].isIntersecting) head.classList.add('bh-in'); }, { threshold: .3 }).observe(head);
+  new IntersectionObserver(en => { if (!en[0].isIntersecting) head.classList.remove('bh-in'); }, { threshold: 0 }).observe(head);
+});
+
+/* services list: heading + big counter on the left, vertical wheel on the right (prev / current / next) */
+document.querySelectorAll('.biz-list:not(.plain)').forEach(list => {
+  const lis = [...list.querySelectorAll('li')];
+  const items = lis.map(li => li.textContent.trim());
+  if (!items.length) return;
+  const imgs = lis.map(li => li.dataset.img).filter(Boolean);
+  const pad = n => String(n).padStart(2, '0');
+  const n = items.length;
+  list.classList.add('sv-one');
+  const left = document.createElement('div');
+  left.className = 'sv-left';
+  left.append(list.querySelector('h3'));
+  left.insertAdjacentHTML('beforeend', `<div class="sv-num"><b>01</b><small>/ ${pad(n)}</small></div>
+    <div class="sv-dots">${items.map(t => `<button type="button" aria-label="${t}"></button>`).join('')}</div>`);
+  const wheel = document.createElement('div');
+  wheel.className = 'sv-wheel';
+  wheel.innerHTML = lis.map((li, i) => li.dataset.icon
+    ? `<span><em class="sv-ic"><i class="fa-solid ${li.dataset.icon || 'fa-shirt'}"></i></em><em class="sv-tx"><b>${items[i]}</b>${li.dataset.sub ? `<small>${li.dataset.sub}</small>` : ''}</em><i class="sv-chev fa-solid fa-chevron-right"></i></span>`
+    : `<span>${items[i]}</span>`).join('');
+  list.prepend(left);
+  list.append(wheel);
+  let pics = [];
+  if (imgs.length === n) {
+    const wrap = document.createElement('div');
+    wrap.className = 'sv-pic-wrap';
+    wrap.innerHTML = `<div class="sv-pic"><div class="sv-pic-in">${lis.map((li, i) => `<img src="${encodeURI(li.dataset.img)}" alt="${items[i]}" decoding="async">`).join('')}</div></div>
+      <button type="button" class="sv-arrow l" aria-label="Previous service"><i class="fa-solid fa-chevron-left"></i></button>
+      <button type="button" class="sv-arrow r" aria-label="Next service"><i class="fa-solid fa-chevron-right"></i></button>`;
+    list.append(wrap);
+    list.classList.add('sv-img');
+    left.insertAdjacentHTML('afterbegin', '<p class="sv-kicker">OUR CREATIVE SERVICES</p>');
+    left.querySelector('.sv-num').insertAdjacentHTML('afterend', '<div class="sv-line"></div>');
+    pics = wrap.querySelectorAll('img');
+    wrap.querySelector('.l').addEventListener('click', () => show((cur - 1 + n) % n));
+    wrap.querySelector('.r').addEventListener('click', () => show((cur + 1) % n));
+    wheel.addEventListener('click', e => {
+      const k = [...spans].indexOf(e.target.closest('span'));
+      if (k >= 0 && k !== cur) show(k);
+    });
+  }
+  const num = left.querySelector('.sv-num b'), spans = wheel.querySelectorAll('span'), dots = left.querySelectorAll('.sv-dots button');
+  const STEP = imgs.length === n ? 3000 : 2600;
+  let cur = 0, timer;
+  const show = i => {
+    cur = i;
+    spans.forEach((s, k) => {
+      s.className = k === cur ? 'on' : k === (cur - 1 + n) % n ? 'prev' : k === (cur + 1) % n ? 'next' : k === (cur - 2 + n) % n ? 'up' : '';
+    });
+    dots.forEach((d, k) => d.classList.toggle('on', k === cur));
+    pics.forEach((p, k) => p.classList.toggle('on', k === cur));
+    if (pics.length) { const box = pics[0].closest('.sv-pic'); box.classList.remove('sweep'); void box.offsetWidth; box.classList.add('sweep'); }
+    num.textContent = pad(cur + 1);
+    num.classList.remove('flip'); void num.offsetWidth; num.classList.add('flip');
+    clearTimeout(timer);
+    timer = setTimeout(() => show((cur + 1) % n), STEP);
+  };
+  dots.forEach((d, i) => d.addEventListener('click', () => i !== cur && show(i)));
+  show(0);
+});
+
+/* LBG card: fade the whole company card in when it scrolls into view */
+document.querySelectorAll('#lbg, #ksf').forEach(sec => new IntersectionObserver((en, obs) => {
+  if (en[0].isIntersecting) { sec.classList.add('lbg-in'); obs.disconnect(); }
+}, { threshold: .08 }).observe(sec));
+
+/* services: one big frame, one picture at a time, slides to the next */
+document.querySelectorAll('.svc-grid').forEach(grid => {
+  const cards = [...grid.querySelectorAll('.svc-card')];
+  if (!cards.length) return;
+  grid.classList.add('svc-slider');
+  grid.insertAdjacentHTML('beforeend', `<button type="button" class="svc-nav prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+    <button type="button" class="svc-nav next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="svc-dots">${cards.map((c, i) => `<button type="button" aria-label="Service ${i + 1}"></button>`).join('')}</div>`);
+  const dots = grid.querySelectorAll('.svc-dots button');
+  let cur = -1, timer;
+  const show = (i, dir = 1) => {
+    if (i === cur) return;
+    const old = cards[cur];
+    if (old) { old.classList.remove('on', 'from-left'); old.classList.add(dir > 0 ? 'out-left' : 'out-right'); setTimeout(() => old.classList.remove('out-left', 'out-right'), 900); }
+    cur = i;
+    cards[cur].classList.toggle('from-left', dir < 0);
+    cards[cur].classList.add('on');
+    dots.forEach((d, k) => d.classList.toggle('on', k === cur));
+    clearTimeout(timer);
+    timer = setTimeout(() => show((cur + 1) % cards.length, 1), 3500);
+  };
+  grid.querySelector('.next').addEventListener('click', () => show((cur + 1) % cards.length, 1));
+  grid.querySelector('.prev').addEventListener('click', () => show((cur - 1 + cards.length) % cards.length, -1));
+  dots.forEach((d, i) => d.addEventListener('click', () => show(i, i > cur ? 1 : -1)));
+  new IntersectionObserver((en, obs) => { if (en[0].isIntersecting) { show(0); obs.disconnect(); } }, { threshold: .2 }).observe(grid);
+});
+
+// LBG brand name: squishy clay pop when clicked
+document.querySelectorAll('#lbg .biz-intro h2').forEach(h => h.addEventListener('click', () => {
+  h.classList.remove('clay-pop'); void h.offsetWidth; h.classList.add('clay-pop');
+}));
+
+// LBG core services: slide images one by one and highlight the matching service
+document.querySelectorAll('.lbg-slider').forEach(sl => {
+  const track = sl.querySelector('.lbg-track'), n = track.children.length, introCount = 3, dotsBox = sl.querySelector('.lbg-dots');
+  const items = [...sl.closest('.lbg-body').querySelectorAll('.biz-list li')];
+  let cur = 0, timer;
+  const dots = [...Array(n)].map((_, i) => { const b = document.createElement('button'); b.setAttribute('aria-label', 'Slide ' + (i + 1)); dotsBox.appendChild(b); return b; });
+  const go = i => {
+    cur = (i + n) % n;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d, k) => d.classList.toggle('on', k === cur));
+    /* The first three slides are the LBG artwork intro. Details begin
+       highlighting only when the service-image sequence starts. */
+    items.forEach((li, k) => li.classList.toggle('on', cur >= introCount && k === cur - introCount));
+  };
+  const play = () => { clearInterval(timer); timer = setInterval(() => go(cur + 1), 2500); };
+  dots.forEach((d, i) => d.addEventListener('click', () => { go(i); play(); }));
+  items.forEach((li, i) => li.addEventListener('click', () => { go(introCount + i); play(); }));
+  sl.addEventListener('mouseenter', () => clearInterval(timer));
+  sl.addEventListener('mouseleave', play);
+  go(0); play();
+});
+
+// LBG logo: glassmorphism shine on click
+document.querySelectorAll('#lbg .biz-logo').forEach(el => el.addEventListener('click', () => {
+  el.classList.remove('glass'); void el.offsetWidth; el.classList.add('glass');
+}));
+
+// KSF: cycle the DTF machine GIF clips (gif/clip_01..NN.gif)
+document.querySelectorAll('.dtf-gif[data-gifs]').forEach(box => {
+  const n = +box.dataset.gifs, first = box.querySelector('img');
+  if (!n || !first) return;
+  let i = 1;
+  setInterval(() => {
+    i = i % n + 1;
+    const next = new Image();
+    next.alt = first.alt;
+    next.src = 'gif/clip_' + String(i).padStart(2, '0') + '.gif';
+    next.onload = () => {
+      box.appendChild(next);
+      requestAnimationFrame(() => next.classList.add('active'));
+      const old = [...box.querySelectorAll('img')].filter(im => im !== next);
+      setTimeout(() => old.forEach(im => im.remove()), 900);
+    };
+  }, 7000);
+});
+
+// Company cards: replay the section entrance animation each time a card is clicked
+document.querySelectorAll('.company-cards .c-card').forEach(card => card.addEventListener('click', () => {
+  const sec = document.querySelector(card.getAttribute('href'));
+  if (!sec || (sec.id !== 'ksf' && sec.id !== 'lbg')) return;
+  sec.classList.remove('lbg-in'); void sec.offsetWidth;
+  setTimeout(() => sec.classList.add('lbg-in'), 350);
+}));
+
+// Kavisuga section: entrance on scroll, replay when its company card is clicked
+(() => {
+  const sec = document.getElementById('kavisuga');
+  if (!sec) return;
+  new IntersectionObserver((en, obs) => { if (en[0].isIntersecting) { sec.classList.add('in'); obs.disconnect(); } }, { threshold: .2 }).observe(sec);
+  document.querySelectorAll('a[href="#kavisuga"]').forEach(a => a.addEventListener('click', () => {
+    sec.classList.remove('in'); void sec.offsetWidth; setTimeout(() => sec.classList.add('in'), 350);
+  }));
+})();
+
+// Kavisuga intro: split tagline + description into words for a one-by-one reveal
+document.querySelectorAll('#kavisuga .ksf2-lead, #kavisuga .ksf2-text').forEach((el, k) => {
+  const base = k === 0 ? 0.9 : 1.3, step = k === 0 ? 0.12 : 0.06;
+  el.innerHTML = el.textContent.trim().split(/\s+/)
+    .map((w, i) => `<span class="ksf2-w" style="animation-delay:${(base + i * step).toFixed(2)}s">${w}</span>`).join(' ');
+});
+
+// Kavisuga: replay the entrance every time the section scrolls back into view,
+// using a different text effect each time
+(() => {
+  const sec = document.getElementById('kavisuga');
+  if (!sec) return;
+  const variants = ['fx-rise', 'fx-slide', 'fx-zoom', 'fx-flip'];
+  let n = 0;
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && e.intersectionRatio >= .2 && !sec.classList.contains('in')) {
+      sec.classList.remove(...variants);
+      sec.classList.add(variants[n++ % variants.length]);
+      void sec.offsetWidth;
+      sec.classList.add('in');
+    } else if (e.intersectionRatio === 0) {
+      sec.classList.remove('in');
+    }
+  }, { threshold: [0, .2] }).observe(sec);
+})();
+
+// Kavisuga Focus Areas: auto-highlight items one by one (pauses while hovering)
+(() => {
+  const items = [...document.querySelectorAll('#kavisuga .ksf2-focus li')];
+  if (!items.length) return;
+  let i = 0, paused = false;
+  const show = () => { items.forEach(li => li.classList.remove('on')); items[i].classList.add('on'); i = (i + 1) % items.length; };
+  items.forEach(li => {
+    li.addEventListener('mouseenter', () => { paused = true; items.forEach(x => x.classList.remove('on')); });
+    li.addEventListener('mouseleave', () => { paused = false; });
+  });
+  show();
+  setInterval(() => { if (!paused) show(); }, 2000);
+})();
+
+// LBG intro: word-by-word text reveal, replayed (with a new effect) every time the section returns to view
+(() => {
+  const sec = document.getElementById('lbg');
+  if (!sec) return;
+  sec.querySelectorAll('.biz-intro .lead, .biz-intro .big').forEach((el, k) => {
+    const base = k === 0 ? 0.6 : 1.0, step = k === 0 ? 0.1 : 0.05;
+    el.innerHTML = el.textContent.trim().split(/\s+/)
+      .map((w, i) => `<span class="ksf2-w" style="animation-delay:${(base + i * step).toFixed(2)}s">${w}</span>`).join(' ');
+  });
+  const variants = ['fx-rise', 'fx-slide', 'fx-zoom', 'fx-flip'];
+  let n = 0;
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && e.intersectionRatio >= .2 && !sec.classList.contains('tx-in')) {
+      sec.classList.remove(...variants);
+      sec.classList.add(variants[n++ % variants.length]);
+      void sec.offsetWidth;
+      sec.classList.add('tx-in');
+    } else if (e.intersectionRatio === 0) {
+      sec.classList.remove('tx-in');
+    }
+  }, { threshold: [0, .2] }).observe(sec);
+})();
+
+// ADA intro: word-by-word reveal, replayed with a new effect each time the section returns
+(() => {
+  const sec = document.getElementById('ada');
+  if (!sec) return;
+  sec.querySelectorAll('.ada-head .lead, .ada-head .big').forEach((el, k) => {
+    const base = k === 0 ? 0.6 : 1.2, step = k === 0 ? 0.1 : 0.025;
+    el.innerHTML = el.textContent.trim().split(/\s+/)
+      .map((w, i) => `<span class="ksf2-w" style="animation-delay:${(base + i * step).toFixed(2)}s">${w}</span>`).join(' ');
+  });
+  const variants = ['fx-rise', 'fx-slide', 'fx-zoom', 'fx-flip'];
+  let n = 0;
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && e.intersectionRatio >= .15 && !sec.classList.contains('tx-in')) {
+      sec.classList.remove(...variants);
+      sec.classList.add(variants[n++ % variants.length]);
+      void sec.offsetWidth;
+      sec.classList.add('tx-in');
+    } else if (e.intersectionRatio === 0) {
+      sec.classList.remove('tx-in');
+    }
+  }, { threshold: [0, .15] }).observe(sec);
+  sec.querySelector('.ada-head .biz-logo')?.addEventListener('click', e => {
+    const el = e.currentTarget; el.classList.remove('glass'); void el.offsetWidth; el.classList.add('glass');
+  });
+})();
+
+// ADA course list: auto-highlight one item at a time (like LBG Core Services); pauses on hover
+(() => {
+  const items = [...document.querySelectorAll('#ada .course-list li')];
+  if (!items.length) return;
+  let i = 0, paused = false;
+  const show = () => { items.forEach(li => li.classList.remove('on')); items[i].classList.add('on'); i = (i + 1) % items.length; };
+  items.forEach((li, k) => {
+    li.addEventListener('mouseenter', () => { paused = true; items.forEach(x => x.classList.remove('on')); });
+    li.addEventListener('mouseleave', () => { paused = false; });
+    li.addEventListener('click', () => { i = k; show(); });
+  });
+  show();
+  setInterval(() => { if (!paused) show(); }, 2200);
+})();
+
+// Vision arrows: replay animation each time the section returns to view
+(() => {
+  const sec = document.querySelector('.vision');
+  if (!sec) return;
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && e.intersectionRatio >= .2) sec.classList.add('vx-in');
+    else if (e.intersectionRatio === 0) sec.classList.remove('vx-in');
+  }, { threshold: [0, .2] }).observe(sec);
+})();

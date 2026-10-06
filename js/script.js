@@ -934,3 +934,14 @@ document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserv
   }));
   document.addEventListener('click', release);
 })();
+
+// "Contact Us" links: scroll so the whole footer is in view (footer sits at the very bottom of the page)
+document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener('click', e => {
+  const ft = document.getElementById('contact');
+  if (!ft) return;
+  e.preventDefault();
+  const fitsOnScreen = ft.offsetHeight <= innerHeight;
+  const y = fitsOnScreen ? document.documentElement.scrollHeight - innerHeight : ft.getBoundingClientRect().top + scrollY;
+  scrollTo({ top: y, behavior: 'smooth' });
+  history.replaceState(null, '', '#contact');
+}));

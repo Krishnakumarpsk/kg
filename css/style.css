@@ -3931,3 +3931,4 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 .modal-side ul li i { flex: 0 0 auto; margin-top: .2em; }
 @media (min-width: 901px) { #ada .ada-img { position: relative; left: -38px; } }
 @media (min-width: 901px) { #ada .ada-head .biz-intro { margin-left: 76px !important; } }
+#lbg .lbg-track img { object-fit: fill !important; }

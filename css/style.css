@@ -3868,3 +3868,6 @@ textarea[name="review"] { min-height: 110px !important; }
 .pg-modal .pg-grid[data-cat="school"] { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; }
 .pg-modal .pg-grid[data-cat="school"] button { aspect-ratio: 16 / 9 !important; }
 .pg-modal .pg-grid button img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
+.pg-modal .pg-grid[data-cat="corporate"] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 36px !important; }
+.pg-modal .pg-grid[data-cat="corporate"] button { aspect-ratio: 16 / 10 !important; }
+@media (max-width: 700px) { .pg-modal .pg-grid[data-cat="corporate"] { grid-template-columns: 1fr !important; gap: 20px !important; } }

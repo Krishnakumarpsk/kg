@@ -424,7 +424,7 @@ const REVIEWS = [
   const CATS = {
     kids: ['Kidswear', 'assets/kids/kids', 11, 'jpeg'],
     school: ['School Uniforms', 'assets/school/clean/school', 10, 'png'],
-    corporate: ['Corporate Uniforms', 'assets/corporate/corp', 3, 'jpeg'],
+    corporate: ['Corporate Uniforms', 'assets/corporate/clean/corp', 3, 'png'],
     tshirts: ['Printed T-Shirts', 'assets/tshirts/tee', 6, 'png']
   };
   const btn = dd.querySelector('.nav-dd-btn');

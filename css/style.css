@@ -3848,3 +3848,11 @@ textarea[name="review"] { min-height: 110px !important; }
 #pg-grid button img { border-radius: 0 !important; background: transparent !important; box-shadow: none !important; border: 0 !important; transition: transform .35s ease; }
 #pg-grid button:hover img { transform: scale(1.03); }
 #pg-view, #pg-view #pg-big { background: transparent !important; box-shadow: none !important; border: 0 !important; border-radius: 0 !important; }
+/* Product gallery: no cards anywhere */
+.pg-modal .pg-box { border-radius: 0 !important; box-shadow: none !important; border: 0 !important; background: #fff !important; }
+.pg-modal .pg-grid button, .pg-modal .pg-grid button:hover, .pg-modal .pg-grid button:focus, .pg-modal .pg-grid a {
+  background: transparent !important; border: 0 !important; box-shadow: none !important; transform: none !important; padding: 0 !important; border-radius: 0 !important; overflow: visible !important; }
+.pg-modal .pg-grid img { border-radius: 0 !important; background: transparent !important; }
+.pg-modal .pg-view { background: transparent !important; border-radius: 0 !important; box-shadow: none !important; }
+.pg-modal .pg-view img { border-radius: 0 !important; }
+.pg-modal .pg-back { border-radius: 0 !important; }

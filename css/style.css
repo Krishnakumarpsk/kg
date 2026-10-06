@@ -3516,3 +3516,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .biz-head.sl-in .biz-intro > :nth-child(2) { animation-delay: .25s !important; }
 #lbg .biz-head.sl-in .biz-intro > :nth-child(3) { animation-delay: .5s !important; }
 @keyframes lbgSlide { from { translate: -60px 0; clip-path: inset(0 100% 0 0); } to { translate: 0 0; clip-path: inset(0 0 0 0); } }
+
+/* LBG head: full-width grey band, smaller logo */
+#lbg .biz-head.grey { background: #f3f3f3 !important; max-width: none !important; width: 100% !important; margin: 0 !important; border-radius: 0 !important;
+  padding: 36px 8% !important; gap: 50px !important; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr) !important; box-sizing: border-box; }
+#lbg .biz-logo img, #lbg .biz-logo .logo-card { max-width: 300px !important; }
+#lbg .biz-logo, #lbg .biz-logo .logo-card { margin: 0 auto !important; justify-self: center; }
+@media (max-width: 900px) { #lbg .biz-head.grey { grid-template-columns: 1fr !important; padding: 26px 18px !important; gap: 18px !important; }
+  #lbg .biz-logo img, #lbg .biz-logo .logo-card { max-width: 240px !important; } }

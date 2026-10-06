@@ -3878,3 +3878,13 @@ textarea[name="review"] { min-height: 110px !important; }
 #rv-write, #rv-write:hover { animation: none !important; box-shadow: none !important; }
 #rv-write::before, #rv-write::after { display: none !important; animation: none !important; }
 @media (min-width: 901px) { #founders { min-height: calc(100vh - 98px); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; } }
+
+/* Company logos: no card/box, gentle zoom on hover/click */
+.company-cards .c-card, .company-cards .c-card:hover, .company-cards .c-card:focus, .company-cards .c-card:active { background: transparent !important; }
+.company-cards .c-card img, .companies.co-in .company-cards .c-card img {
+  background: transparent !important; box-shadow: none !important; border: 0 !important; border-radius: 0 !important; padding: 0 !important;
+  mix-blend-mode: normal !important; height: 150px !important; width: 100% !important; object-fit: contain !important;
+  transition: transform .9s cubic-bezier(.2,.7,.2,1) !important; }
+.company-cards .c-card:nth-child(3) img { height: 170px !important; }
+.company-cards .c-card:hover img, .company-cards .c-card:focus img { transform: scale(1.07) !important; }
+.company-cards .c-card:active img { transform: scale(.95) !important; transition-duration: .2s !important; }

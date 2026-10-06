@@ -896,3 +896,8 @@ document.querySelectorAll('#services .svs-panel').forEach(panel => {
 document.querySelectorAll('.exp-stats').forEach(el => new IntersectionObserver((en, obs) => {
   el.classList.toggle('tx-in', en[0].isIntersecting); // replay each time it comes into view
 }, { threshold: .3 }).observe(el));
+
+// LBG intro text: slide in every time it comes into view
+document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserver(en => {
+  el.classList.toggle('sl-in', en[0].isIntersecting);
+}, { threshold: .25 }).observe(el));

@@ -3556,3 +3556,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #kavisuga .ksf2-gif img { border-radius: 16px; }
 #kavisuga .ksf2-logo img { mix-blend-mode: normal !important; max-width: 280px; }
 #kavisuga .ksf2-cert-text { padding-left: 0 !important; }
+
+/* Kavisuga: plain white background; Focus Areas highlight like LBG Core Services (red text, no pill) */
+#kavisuga, #kavisuga .ksf2-row, #kavisuga .ksf2-focus { background: #fff !important; background-image: none !important; }
+#kavisuga .ksf2-head { background: #f3f3f3 !important; background-image: none !important; }
+#kavisuga::before, #kavisuga::after, #kavisuga .ksf2-row::before, #kavisuga .ksf2-row::after { display: none !important; }
+#kavisuga .ksf2-focus li, #kavisuga .ksf2-focus li.on, #kavisuga .ksf2-focus li:hover {
+  background: transparent !important; box-shadow: none !important; border: 0 !important; transition: color .35s, transform .35s !important; }
+#kavisuga .ksf2-focus li.on, #kavisuga .ksf2-focus li:hover { color: var(--red) !important; transform: translateX(4px); }

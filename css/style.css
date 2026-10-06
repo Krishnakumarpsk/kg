@@ -3967,3 +3967,4 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 #ada .ada-foot > div:first-child .ada-line { align-self: center !important; text-align: center !important; }
 #ada .ada-line span { margin-right: 3em !important; }
 #ada .ada-line span:last-child { margin-right: 0 !important; }
+@media (min-width: 701px) { #ada .ada-foot .stat-pill { position: relative; left: 38px; } }

@@ -3444,3 +3444,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   .ln-stream.ln-mobile .ln-track { --spd: 38s; }
   .ln-streams { gap: 10px !important; }
 }
+
+/* Stats + eco-text boxes: no box animations */
+.eco-text, .exp-stats, .exp-card, .exp-card *,
+.eco-text:hover, .exp-card:hover, .exp-card:focus, .exp-card:active {
+  animation: none !important; transition: none !important; transform: none !important; opacity: 1 !important; filter: none !important; }
+.exp-card::before, .exp-card::after, .eco-text::before, .eco-text::after { animation: none !important; display: none !important; }

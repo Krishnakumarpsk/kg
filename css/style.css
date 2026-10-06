@@ -3603,3 +3603,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #ada .ada-img img { width: 100%; height: auto; border-radius: 18px !important; }
 #ada .course-box { margin: 0 !important; padding-left: 0 !important; }
 @media (max-width: 900px) { #ada .ada-course { grid-template-columns: 1fr !important; gap: 22px !important; padding: 20px 16px !important; } }
+#ada .ada-img, #ada .ada-img img, #ada .ada-course .ada-img img { opacity: 1 !important; visibility: visible !important; clip-path: none !important; }

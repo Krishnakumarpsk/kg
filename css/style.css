@@ -3735,3 +3735,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   .svs-split .svc-grid.svc-slider { aspect-ratio: 1 / 1 !important; width: min(600px, calc(100vh - 200px)) !important; max-width: 600px !important; justify-self: end; }
 }
 .svs-split .svc-card img, #services .svc-slider .svc-card img { object-fit: contain !important; background: #fff; }
+@media (min-width: 901px) { .svs-panel { margin-left: 60px !important; } }

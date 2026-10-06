@@ -3627,3 +3627,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #kavisuga .ksf2-focus, #kavisuga .ksf2-focus h3, #kavisuga .ksf2-focus ul, #kavisuga .ksf2-focus li, #kavisuga .ksf2-cert-text { text-align: left !important; }
 #kavisuga .ksf2-focus ul { padding-left: 0 !important; margin-left: 0 !important; }
 @media (min-width: 901px) { #lbg .biz-list.plain { justify-self: start !important; margin-left: 70px !important; } }
+@media (min-width: 901px) { #lbg .biz-head .biz-intro { margin-left: 115px !important; } }

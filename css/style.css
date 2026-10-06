@@ -3505,3 +3505,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .biz-head *, #lbg .biz-body > *:not(.lbg-image-section) * { opacity: 1 !important; filter: none !important; }
 #lbg .biz-logo, #lbg .biz-logo img, #lbg .biz-intro, #lbg .biz-intro *, #lbg .biz-list, #lbg .biz-list * { transform: none !important; }
 #lbg .biz-logo img { mix-blend-mode: normal !important; border-radius: 0 !important; padding: 0 !important; }
+#lbg .biz-logo { overflow: visible !important; }
+#lbg .biz-logo img { width: 100% !important; max-width: 460px !important; height: auto !important; max-height: none !important; object-fit: contain !important; margin: 0 auto; transform: none !important; }
+#lbg .biz-logo .logo-card { overflow: visible !important; clip-path: none !important; max-width: 460px !important; width: 100% !important; padding: 0 !important; transform: none !important; scale: none !important; opacity: 1 !important; }
+#lbg .biz-logo .logo-card img { clip-path: none !important; max-width: 100% !important; width: 100% !important; opacity: 1 !important; scale: none !important; }

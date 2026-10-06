@@ -3811,3 +3811,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .ct-hero .bni-badge { top: 20px !important; width: 84px !important; }
 .ct-hero .main-nav { top: 22px !important; }
 @media (max-width: 700px) { .ct-hero .group-logo-img { height: 56px !important; } .ct-hero .group-logo { margin-top: 56px !important; } }
+
+/* Review form: bigger review box, smaller buttons */
+textarea[name="review"] { min-height: 150px !important; }
+.rv-actions { gap: 10px !important; margin-top: 14px !important; }
+.rv-actions .rv-outline, .rv-actions .rv-btn { padding: 9px 20px !important; font-size: 14px !important; min-height: 0 !important; height: auto !important; flex: 0 0 auto !important; width: auto !important; }

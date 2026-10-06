@@ -3667,3 +3667,19 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   .fd-card .fd-photo { grid-row: auto !important; margin: 0 auto 14px !important; }
   .fd-line { margin: 12px auto 14px; }
 }
+
+/* Founders: bigger square photo, full red name, text vertically centred beside photo */
+.fd-grid { max-width: 1240px !important; gap: 60px !important; }
+.fd-card, .fd-card:hover, .fd-card:focus-visible { grid-template-columns: 280px 1fr !important; grid-template-rows: 1fr auto auto auto auto 1fr !important; column-gap: 32px !important; }
+.fd-card .fd-photo { grid-column: 1; grid-row: 1 / 7 !important; width: 280px !important; height: 280px !important; border-radius: 0 !important; }
+.fd-card h3 { grid-column: 2; grid-row: 2; margin-top: 0 !important; }
+.fd-card .fd-role { grid-column: 2; grid-row: 3; }
+.fd-card .fd-line { grid-column: 2; grid-row: 4; }
+.fd-card .fd-summary { grid-column: 2; grid-row: 5; }
+.fd-card h3 span, .fd-card h3 b { color: var(--red) !important; }
+@media (max-width: 1100px) { .fd-card, .fd-card:hover { grid-template-columns: 220px 1fr !important; } .fd-card .fd-photo { width: 220px !important; height: 220px !important; } }
+@media (max-width: 520px) {
+  .fd-card, .fd-card:hover { grid-template-columns: 1fr !important; grid-template-rows: none !important; }
+  .fd-card .fd-photo, .fd-card h3, .fd-card .fd-role, .fd-card .fd-line, .fd-card .fd-summary { grid-column: 1 !important; grid-row: auto !important; }
+  .fd-card .fd-photo { width: 240px !important; height: 240px !important; }
+}

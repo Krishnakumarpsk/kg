@@ -3495,3 +3495,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .biz-intro h2 { padding-left: 0 !important; padding-right: 0 !important; }
 #lbg .lbg-slider { padding: 0 !important; }
 #lbg .biz-logo img { mix-blend-mode: multiply; }
+
+/* LBG section: no animations, no background cards anywhere */
+#lbg *:not(.lbg-dots):not(.lbg-dots *), #lbg *::before, #lbg *::after {
+  animation: none !important; box-shadow: none !important; }
+#lbg *:not(.lbg-dots):not(.lbg-dots *):not(.lbg-track) { transition: none !important; }
+#lbg .biz-head *:not(.lbg-dots *), #lbg .biz-body *:not(.lbg-dots *) { background-color: transparent !important; background-image: none !important; border-color: transparent !important; }
+#lbg *::before, #lbg *::after { display: none !important; }
+#lbg .biz-head *, #lbg .biz-body > *:not(.lbg-image-section) * { opacity: 1 !important; filter: none !important; }
+#lbg .biz-logo, #lbg .biz-logo img, #lbg .biz-intro, #lbg .biz-intro *, #lbg .biz-list, #lbg .biz-list * { transform: none !important; }

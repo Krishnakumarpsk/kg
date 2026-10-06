@@ -3786,3 +3786,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .reach .reach-head { display: none !important; }
 .reach .reach-card { background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; }
 .reach .map-wrap, .reach #world-map, .reach .leaflet-container { border-radius: 0 !important; border: 0 !important; box-shadow: none !important; }
+
+/* Ratings: 1 star red, 2-3 yellow, 4-5 green */
+.rate-low  { --rate: #dc2c1e; }
+.rate-mid  { --rate: #f2b705; }
+.rate-good { --rate: #22a447; }
+.rate-low .fa-star:not(.off), .rate-mid .fa-star:not(.off), .rate-good .fa-star:not(.off) { color: var(--rate) !important; }
+.rv-bar.rate-low .rv-track b, .rv-bar.rate-mid .rv-track b, .rv-bar.rate-good .rv-track b { background: var(--rate) !important; background-image: none !important; }

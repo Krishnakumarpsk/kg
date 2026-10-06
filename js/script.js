@@ -316,7 +316,8 @@ const REVIEWS = [
   const list = document.getElementById('t-list');
   if (!list) return;
   const esc = v => String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const starRow = n => [1, 2, 3, 4, 5].map(i => `<i class="fa-solid fa-star${i <= n ? '' : ' off'}"></i>`).join('');
+  const rateCls = n => n >= 4 ? 'rate-good' : n >= 2 ? 'rate-mid' : 'rate-low'; // 1 red, 2-3 yellow, 4-5 green
+  const starRow = n => `<span class="${rateCls(n)}">` + [1, 2, 3, 4, 5].map(i => `<i class="fa-solid fa-star${i <= n ? '' : ' off'}"></i>`).join('') + '</span>';
   const initials = n => n.trim().split(/\s+/).slice(0, 2).map(w => w[0].toUpperCase()).join('');
   const fmtDate = d => new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
@@ -333,7 +334,7 @@ const REVIEWS = [
     document.getElementById('rv-rec').textContent = Math.round(all.filter(r => r.rating >= 4).length / n * 100) + '%';
     document.getElementById('rv-bars').innerHTML = [5, 4, 3, 2, 1].map(s => {
       const c = all.filter(r => r.rating === s).length, p = Math.round(c / n * 100);
-      return `<div class="rv-bar"><span>${s} <i class="fa-solid fa-star"></i></span><div class="rv-track"><b style="--w:${p}%"></b></div><em><strong>${c}</strong> · ${p}%</em></div>`;
+      return `<div class="rv-bar ${rateCls(s)}"><span>${s} <i class="fa-solid fa-star"></i></span><div class="rv-track"><b style="--w:${p}%"></b></div><em><strong>${c}</strong> · ${p}%</em></div>`;
     }).join('');
     document.getElementById('rv-rings').innerHTML = [['response', 'Response'], ['quality', 'Quality'], ['delivery', 'Delivery']].map(([k, l]) => {
       const v = pct(k);

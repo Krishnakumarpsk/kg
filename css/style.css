@@ -3504,3 +3504,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg *::before, #lbg *::after { display: none !important; }
 #lbg .biz-head *, #lbg .biz-body > *:not(.lbg-image-section) * { opacity: 1 !important; filter: none !important; }
 #lbg .biz-logo, #lbg .biz-logo img, #lbg .biz-intro, #lbg .biz-intro *, #lbg .biz-list, #lbg .biz-list * { transform: none !important; }
+#lbg .biz-logo img { mix-blend-mode: normal !important; border-radius: 0 !important; padding: 0 !important; }

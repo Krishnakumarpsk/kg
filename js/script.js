@@ -920,6 +920,7 @@ document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserv
     src = l; l.classList.add('picked');
     requestAnimationFrame(() => ghost.classList.add('on'));
     ghost.addEventListener('click', ev => { ev.stopPropagation(); release(); });
+    ghost.addEventListener('mouseleave', release); // moving the mouse away puts it back into the flow
   }));
   document.addEventListener('click', release);
 })();

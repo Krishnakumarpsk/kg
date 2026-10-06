@@ -3762,3 +3762,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 @media (max-width: 700px) { .ln-stream .ln-logo, .ln-stream .ln-logo:hover { width: 110px !important; height: 62px !important; flex-basis: 110px !important; padding: 8px 10px !important; }
   .ln-stream .ln-logo img { max-height: 34px !important; max-width: 84px !important; } }
 .live-net .ln-stream { padding: 6px 0 !important; }
+
+/* Brands: bigger logos; rows keep moving on hover/click; clicked logo pops */
+.ln-streams:hover .ln-track, .ln-streams:active .ln-track { animation-play-state: running !important; }
+.ln-stream .ln-logo, .ln-stream .ln-logo.hl, .ln-stream .ln-logo:hover { width: 180px !important; height: 96px !important; flex-basis: 180px !important; padding: 12px 18px !important; cursor: pointer; }
+.ln-stream .ln-logo img { max-height: 62px !important; max-width: 144px !important; transition: transform .35s ease; }
+.ln-stream .ln-logo.pick img { transform: scale(1.18); }
+@media (max-width: 700px) { .ln-stream .ln-logo, .ln-stream .ln-logo:hover { width: 128px !important; height: 72px !important; flex-basis: 128px !important; }
+  .ln-stream .ln-logo img { max-height: 44px !important; max-width: 104px !important; } }

@@ -897,3 +897,10 @@ document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserv
   if (en[0].isIntersecting) { el.classList.remove('sl-in'); void el.offsetWidth; el.classList.add('sl-in'); }
   else el.classList.remove('sl-in');
 }, { threshold: .2 }).observe(el));
+
+// Brands: clicking a logo pops it while the rows keep scrolling
+document.querySelectorAll('.ln-stream .ln-logo').forEach(l => l.addEventListener('click', () => {
+  document.querySelectorAll('.ln-logo.pick').forEach(x => x.classList.remove('pick'));
+  l.classList.add('pick');
+  setTimeout(() => l.classList.remove('pick'), 1200);
+}));

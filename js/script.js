@@ -959,3 +959,12 @@ document.querySelectorAll('a[href="#founders"]').forEach(a => a.addEventListener
   scrollTo({ top: sec.getBoundingClientRect().top + scrollY - barH + 1, behavior: 'smooth' });
   history.replaceState(null, '', '#founders');
 }));
+
+// ADA Course Contents: items fade up one by one each time the list scrolls into view (like Kavisuga Focus Areas)
+document.querySelectorAll('#ada .course-list').forEach(list => {
+  list.querySelectorAll('li').forEach((li, k) => li.style.setProperty('--k', k));
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { list.classList.remove('tx-in'); void list.offsetWidth; list.classList.add('tx-in'); }
+    else list.classList.remove('tx-in');
+  }, { threshold: .2 }).observe(list);
+});

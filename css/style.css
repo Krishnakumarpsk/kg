@@ -3974,3 +3974,9 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
   #ada .ada-foot .stat-pill { left: 0 !important; margin-left: auto !important; }
 }
 #ada .ada-img, #ada .ada-img img, #ada .ada-course .ada-img img { border-radius: 0 !important; }
+
+/* ADA Course Contents: Kavisuga-style text animation */
+#ada .course-list:not(.tx-in) li { opacity: 0 !important; }
+#ada .course-list.tx-in li { animation: lbgFadeUp .6s ease both !important; animation-delay: calc(var(--k) * .12s) !important; }
+#ada .course-list li { transition: color .35s, transform .35s !important; }
+#ada .course-list li.on, #ada .course-list li:hover { color: var(--red) !important; transform: translateX(4px) !important; }

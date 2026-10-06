@@ -653,11 +653,6 @@ document.querySelectorAll('.svc-grid').forEach(grid => {
   new IntersectionObserver((en, obs) => { if (en[0].isIntersecting) { show(0); obs.disconnect(); } }, { threshold: .2 }).observe(grid);
 });
 
-// LBG brand name: squishy clay pop when clicked
-document.querySelectorAll('#lbg .biz-intro h2').forEach(h => h.addEventListener('click', () => {
-  h.classList.remove('clay-pop'); void h.offsetWidth; h.classList.add('clay-pop');
-}));
-
 // LBG core services: slide images one by one and highlight the matching service
 document.querySelectorAll('.lbg-slider').forEach(sl => {
   const track = sl.querySelector('.lbg-track'), n = track.children.length, introCount = 3, dotsBox = sl.querySelector('.lbg-dots');

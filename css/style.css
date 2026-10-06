@@ -3456,7 +3456,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   background: transparent !important; border: 0 !important; box-shadow: none !important; }
 
 /* Stats: text animations */
-.exp-card p, .exp-card span { opacity: 0 !important; }
+.exp-stats:not(.tx-in) .exp-card p, .exp-stats:not(.tx-in) .exp-card span { opacity: 0; }
 .exp-stats.tx-in .exp-card p { animation: stPop .8s cubic-bezier(.2,.9,.3,1.3) both !important; }
 .exp-stats.tx-in .exp-card span { animation: stUp .7s ease both !important; }
 .exp-stats.tx-in .exp-card:nth-child(1) p { animation-delay: .05s !important; } .exp-stats.tx-in .exp-card:nth-child(1) span { animation-delay: .35s !important; }

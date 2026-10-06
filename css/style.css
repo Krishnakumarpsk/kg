@@ -3824,3 +3824,6 @@ textarea[name="review"] { min-height: 150px !important; }
 .rv-modal .rv-form label { margin-bottom: 8px !important; }
 textarea[name="review"] { min-height: 110px !important; }
 .rv-actions { justify-content: center !important; }
+/* Review popup sits above the sticky menu bar; wider form */
+.rv-modal { z-index: 3000 !important; }
+.rv-modal .rv-form { width: min(640px, 100%) !important; max-width: 640px !important; padding-left: 34px !important; padding-right: 34px !important; }

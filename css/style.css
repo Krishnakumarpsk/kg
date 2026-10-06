@@ -3968,3 +3968,8 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 #ada .ada-line span { margin-right: 3em !important; }
 #ada .ada-line span:last-child { margin-right: 0 !important; }
 @media (min-width: 701px) { #ada .ada-foot .stat-pill { position: relative; left: 38px; } }
+@media (min-width: 701px) {
+  #ada .ada-foot { max-width: none !important; width: 100% !important; box-sizing: border-box; padding-left: 4% !important; padding-right: 4% !important; }
+  #ada .ada-foot > div:first-child { flex: 1 1 auto !important; }
+  #ada .ada-foot .stat-pill { left: 0 !important; margin-left: auto !important; }
+}

@@ -3798,3 +3798,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #testimonials .rv-summary, #testimonials .rv-card, #testimonials .rv-card:hover { background: #f2f2f2 !important; background-image: none !important; border: 0 !important; box-shadow: none !important; }
 #testimonials .rv-summary::before, #testimonials .rv-summary::after, #testimonials .rv-card::before, #testimonials .rv-card::after { display: none !important; }
 #testimonials .rv-card > *:last-child, #testimonials .rv-card [class*="foot"] { border-color: #e2e2e2 !important; }
+#testimonials .rv-track { background: #e3e3e3 !important; background-image: none !important; }

@@ -3897,3 +3897,4 @@ textarea[name="review"] { min-height: 110px !important; }
 /* Home banner: mild white border all round + slower moving white line */
 .hero:not(.ct-hero) { box-shadow: inset 0 0 0 3px rgba(255,255,255,.35); }
 .hero:not(.ct-hero) .hero-flow rect { animation-duration: 16s !important; stroke-width: 3px !important; }
+.hero:not(.ct-hero) { box-shadow: inset 0 0 0 4px rgba(255,255,255,.55) !important; }

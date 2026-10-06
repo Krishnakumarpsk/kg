@@ -382,8 +382,14 @@ const REVIEWS = [
     const out = form.querySelector(`[data-out="${r.name}"]`);
     const box = r.closest('.rv-range');
     const upd = () => { out.textContent = r.value; r.style.setProperty('--v', (r.value - r.min) / (r.max - r.min) * 100 + '%'); box.className = 'rv-range ' + pctCls(+r.value); };
-    r.addEventListener('input', upd); upd();
+    r.addEventListener('input', () => { upd(); autoRate(); }); upd();
   });
+  // overall stars follow the average of Response / Quality / Delivery
+  function autoRate() {
+    const v = ['response', 'quality', 'delivery'].reduce((t, k) => t + +form.elements[k].value, 0) / 3;
+    rating = v > 90 ? 5 : v > 80 ? 4 : v > 65 ? 3 : v > 50 ? 2 : 1;
+    paint(rating);
+  }
 
   form.addEventListener('submit', e => {
     e.preventDefault();

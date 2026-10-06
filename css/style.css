@@ -3687,3 +3687,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .fd-card:first-child .fd-photo { background: rgb(249,247,248) !important; }
 .fd-card:first-child .fd-photo img { object-fit: contain !important; object-position: center bottom !important; }
 .founders .fd-grid { padding-top: 30px !important; }
+
+/* Vision: smaller arrows + cards; description cards fully static */
+.vision .arrows { max-width: 1100px; margin-left: auto; margin-right: auto; }
+.vision .arrow { padding: 14px 20% 14px 22px !important; }
+.vision .arrow strong { font-size: 34px !important; }
+.vision .arrow span { font-size: 14px !important; }
+.vision .arrow-col p, .vision .arrow-col p:hover, .vision .arrow-col p:focus, .vision .arrow-col p:active {
+  font-size: 14px !important; padding: 14px 16px !important; margin-top: 14px !important; border-radius: 16px !important;
+  background: #fff !important; border-color: transparent !important; animation: none !important; transition: none !important; transform: none !important; opacity: 1 !important; }

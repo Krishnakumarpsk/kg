@@ -3424,3 +3424,8 @@ body.fd-lock { overflow: hidden; }
   .hero .pillars > span { display: none !important; }
   .hero .pillars .pw { display: block; }
 }
+
+/* Mobile tap: 5% grey instead of the browser's blue */
+* { -webkit-tap-highlight-color: rgba(0,0,0,.05) !important; }
+a:focus, button:focus, [tabindex]:focus, div:focus, p:focus { outline: none; }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid #bdbdbd; outline-offset: 2px; }

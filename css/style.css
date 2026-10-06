@@ -3980,3 +3980,8 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 #ada .course-list.tx-in li { animation: lbgFadeUp .6s ease both !important; animation-delay: calc(var(--k) * .12s) !important; }
 #ada .course-list li { transition: color .35s, transform .35s !important; }
 #ada .course-list li.on, #ada .course-list li:hover { color: var(--red) !important; transform: translateX(4px) !important; }
+
+/* ADA Course Contents: highlight box like LBG Core Services (grey pill, thin border, red text) */
+#ada .course-list li { position: relative; padding: 8px 18px 8px 34px !important; margin: 0 0 6px !important; border: 1px solid transparent !important; border-radius: 14px !important;
+  background: transparent !important; transition: background-color .35s, color .35s, border-color .35s !important; }
+#ada .course-list li.on, #ada .course-list li:hover { background: #f2f2f2 !important; border-color: #e0e0e0 !important; color: var(--red) !important; transform: none !important; }

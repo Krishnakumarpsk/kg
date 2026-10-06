@@ -3606,3 +3606,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #ada .ada-img, #ada .ada-img img, #ada .ada-course .ada-img img { opacity: 1 !important; visibility: visible !important; clip-path: none !important; }
 #lbg .lbg-image-section { justify-content: flex-start !important; }
 #lbg .lbg-body { padding-left: 2% !important; }
+@media (min-width: 901px) { #lbg .lbg-body { margin-left: max(1%, calc((100% - 1150px) / 2 - 80px)) !important; margin-right: auto !important; } }

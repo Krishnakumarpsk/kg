@@ -520,7 +520,9 @@ document.querySelectorAll('[data-gifs]').forEach(box => {
   const done = () => { window.heroDone = true; document.dispatchEvent(new Event('hero-done')); };
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { all.forEach(c => c.classList.add('on')); done(); return; }
   // no typing: the whole sentence fades in right after the heading (~2s), together with the cards
-  setTimeout(() => { p.classList.add('in'); all.forEach(c => c.classList.add('on')); done(); }, 2000);
+  // order: DESIGN • MANUFACTURE • EDUCATE -> this sentence (2s) -> company logos section (3.2s)
+  setTimeout(() => { p.classList.add('in'); all.forEach(c => c.classList.add('on')); }, 2000);
+  setTimeout(done, 3200);
 })();
 
 /* pillars: split DESIGN / MANUFACTURE / EDUCATE into letters, one word after another */

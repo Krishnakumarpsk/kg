@@ -3587,3 +3587,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #ada .ada-img { padding: 0 !important; }
 #ada .ada-img img { border-radius: 18px; }
 #ada .course-list li.on, #ada .course-list li:hover { color: var(--red) !important; }
+
+/* ADA head: full-width grey band */
+#ada .ada-head { max-width: none !important; width: 100% !important; margin: 0 !important; border-radius: 0 !important; box-sizing: border-box;
+  padding: 36px max(4%, calc((100% - 1240px) / 2)) !important; }

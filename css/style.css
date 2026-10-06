@@ -3728,3 +3728,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   .svs-split { grid-template-columns: minmax(0, .75fr) minmax(0, 820px) !important; max-width: 1400px !important; padding-right: 2%; box-sizing: border-box; }
   .svs-split .svc-grid.svc-slider { width: 100% !important; max-width: 820px !important; aspect-ratio: 4 / 3 !important; justify-self: end; }
 }
+
+/* Services: square frame sized to fit the screen, full image (no cropping) */
+@media (min-width: 901px) {
+  .svs-split { grid-template-columns: minmax(0, 1fr) auto !important; max-width: 1250px !important; padding-right: 0; }
+  .svs-split .svc-grid.svc-slider { aspect-ratio: 1 / 1 !important; width: min(600px, calc(100vh - 200px)) !important; max-width: 600px !important; justify-self: end; }
+}
+.svs-split .svc-card img, #services .svc-slider .svc-card img { object-fit: contain !important; background: #fff; }

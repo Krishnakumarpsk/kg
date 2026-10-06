@@ -520,11 +520,7 @@ document.querySelectorAll('[data-gifs]').forEach(box => {
   const done = () => { window.heroDone = true; document.dispatchEvent(new Event('hero-done')); };
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { all.forEach(c => c.classList.add('on')); done(); return; }
   // no typing: the whole sentence fades in right after the heading (~2s), together with the cards
-  // order: DESIGN • MANUFACTURE • EDUCATE (~2s) -> this sentence -> main logo -> sections below
-  const logo = document.querySelector('.hero:not(.ct-hero) .group-logo');
-  setTimeout(() => { p.classList.add('in'); all.forEach(c => c.classList.add('on')); }, 2100);
-  setTimeout(() => { if (logo) logo.classList.add('logo-in'); }, 2800);
-  setTimeout(done, 3500);
+  setTimeout(() => { p.classList.add('in'); all.forEach(c => c.classList.add('on')); done(); }, 2000);
 })();
 
 /* pillars: split DESIGN / MANUFACTURE / EDUCATE into letters, one word after another */

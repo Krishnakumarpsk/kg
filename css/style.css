@@ -3529,3 +3529,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .biz-head.sl-in .biz-intro > * { animation-duration: 1s !important; }
 #lbg .biz-head.sl-in .biz-intro > :nth-child(2) { animation-delay: .45s !important; }
 #lbg .biz-head.sl-in .biz-intro > :nth-child(3) { animation-delay: .9s !important; }
+
+/* LBG body: shift left, bigger slider, one full slide at a time */
+#lbg .lbg-body { display: grid !important; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr) !important; gap: 50px !important; align-items: center;
+  max-width: 1300px !important; margin: 0 auto !important; padding: 30px 4% !important; box-sizing: border-box; }
+#lbg .lbg-image-section { justify-content: flex-start !important; }
+#lbg .lbg-slider { width: 100% !important; max-width: 640px !important; margin: 0 !important; border: 1px solid #e3e3e3 !important; border-radius: 22px !important; overflow: hidden !important; }
+#lbg .lbg-track { display: flex !important; width: 100% !important; gap: 0 !important; transition: transform .6s ease !important; }
+#lbg .lbg-track img { flex: 0 0 100% !important; min-width: 100% !important; width: 100% !important; margin: 0 !important; border-radius: 0 !important; padding: 0 !important; }
+@media (max-width: 900px) { #lbg .lbg-body { grid-template-columns: 1fr !important; gap: 22px !important; padding: 20px 16px !important; } }

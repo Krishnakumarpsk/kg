@@ -3943,3 +3943,6 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 #ada .ada-line { display: block !important; margin: 0 !important; justify-content: flex-start !important; }
 #ada .ada-line span { display: inline !important; padding: 0 !important; margin: 0 !important; color: #222 !important; font-size: 24px !important; font-weight: 500 !important; cursor: default; }
 @media (max-width: 700px) { #ada .ada-line span { font-size: 18px !important; } }
+#ada .ada-line { white-space: nowrap !important; }
+#ada .ada-line span { font-size: clamp(13px, 1.6vw, 24px) !important; }
+#ada .ada-foot > div:first-child { max-width: none !important; width: auto !important; flex: 1 1 auto !important; }

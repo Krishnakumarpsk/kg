@@ -3686,3 +3686,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .fd-grid { margin-top: 40px !important; }
 .fd-card:first-child .fd-photo { background: rgb(249,247,248) !important; }
 .fd-card:first-child .fd-photo img { object-fit: contain !important; object-position: center bottom !important; }
+.founders .fd-grid { padding-top: 30px !important; }

@@ -3840,3 +3840,5 @@ textarea[name="review"] { min-height: 110px !important; }
 .rv-ring.rate-low .fg, .rv-ring.rate-mid .fg, .rv-ring.rate-good .fg { stroke: var(--rate) !important; }
 .rv-ring.rate-low b, .rv-ring.rate-mid b, .rv-ring.rate-good b { color: var(--rate) !important; }
 .rv-card footer b.rate-low, .rv-card footer b.rate-mid, .rv-card footer b.rate-good { color: var(--rate) !important; }
+.reach .map-wrap { position: relative; z-index: 0 !important; isolation: isolate; overflow: hidden; }
+.reach .leaflet-control-container, .reach .leaflet-pane, .reach .leaflet-top, .reach .leaflet-bottom { z-index: 1 !important; }

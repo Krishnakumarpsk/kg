@@ -3772,3 +3772,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   .ln-stream .ln-logo img { max-height: 44px !important; max-width: 104px !important; } }
 .ln-stream.held .ln-track { animation-play-state: paused !important; }
 .ln-stream .ln-logo.pick { background: #e8e8e8 !important; }
+/* Brands: picked logo stays put as a floating tile, its row keeps flowing */
+.ln-streams { position: relative; }
+.ln-stream .ln-logo.picked { visibility: hidden; }
+.ln-streams .ln-ghost { position: absolute; z-index: 5; width: 180px; height: 96px; padding: 12px 18px; box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+  background: #e8e8e8; border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,.12); cursor: pointer; transform: scale(1); transition: transform .3s ease; }
+.ln-streams .ln-ghost.on { transform: scale(1.1); }
+.ln-streams .ln-ghost img { max-height: 62px; max-width: 144px; object-fit: contain; mix-blend-mode: multiply; }
+@media (max-width: 700px) { .ln-streams .ln-ghost { width: 128px; height: 72px; } .ln-streams .ln-ghost img { max-height: 44px; max-width: 104px; } }

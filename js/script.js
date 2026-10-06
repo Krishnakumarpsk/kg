@@ -898,15 +898,28 @@ document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserv
   else el.classList.remove('sl-in');
 }, { threshold: .2 }).observe(el));
 
-// Brands: clicking a logo stops its row (logo stays highlighted) while the other rows keep moving; click again to resume
-document.querySelectorAll('.ln-stream .ln-logo').forEach(l => l.addEventListener('click', e => {
-  e.stopPropagation();
-  const row = l.closest('.ln-stream'), was = l.classList.contains('pick');
-  document.querySelectorAll('.ln-logo.pick').forEach(x => x.classList.remove('pick'));
-  document.querySelectorAll('.ln-stream.held').forEach(r => r.classList.remove('held'));
-  if (!was) { l.classList.add('pick'); row.classList.add('held'); }
-}));
-document.addEventListener('click', () => {
-  document.querySelectorAll('.ln-logo.pick').forEach(x => x.classList.remove('pick'));
-  document.querySelectorAll('.ln-stream.held').forEach(r => r.classList.remove('held'));
-});
+// Brands: clicking a logo keeps THAT logo still (floating copy) while its row keeps flowing; click it or elsewhere to release
+(() => {
+  let ghost = null, src = null;
+  const release = () => {
+    if (!ghost) return;
+    const g = ghost, o = src; ghost = src = null;
+    g.classList.remove('on');
+    setTimeout(() => { g.remove(); o.classList.remove('picked'); }, 300);
+  };
+  document.querySelectorAll('.ln-stream .ln-logo').forEach(l => l.addEventListener('click', e => {
+    e.stopPropagation();
+    if (ghost) { release(); return; }
+    const r = l.getBoundingClientRect(), sec = l.closest('.ln-streams'), sr = sec.getBoundingClientRect();
+    ghost = l.cloneNode(true);
+    ghost.className = 'ln-logo ln-ghost';
+    ghost.removeAttribute('aria-hidden');
+    ghost.style.left = (r.left - sr.left) + 'px';
+    ghost.style.top = (r.top - sr.top) + 'px';
+    sec.appendChild(ghost);
+    src = l; l.classList.add('picked');
+    requestAnimationFrame(() => ghost.classList.add('on'));
+    ghost.addEventListener('click', ev => { ev.stopPropagation(); release(); });
+  }));
+  document.addEventListener('click', release);
+})();

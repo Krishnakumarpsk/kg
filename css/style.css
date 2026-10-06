@@ -3781,3 +3781,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .ln-streams .ln-ghost img { max-height: 62px; max-width: 144px; object-fit: contain; mix-blend-mode: multiply; }
 @media (max-width: 700px) { .ln-streams .ln-ghost { width: 128px; height: 72px; } .ln-streams .ln-ghost img { max-height: 44px; max-width: 104px; } }
 .ln-stream .ln-logo, .ln-stream .ln-logo.hl, .ln-stream .ln-logo:hover, .ln-streams .ln-ghost { border-radius: 0 !important; }
+
+/* Global reach: no headline, no card/border, square-cornered map */
+.reach .reach-head { display: none !important; }
+.reach .reach-card { background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; }
+.reach .map-wrap, .reach #world-map, .reach .leaflet-container { border-radius: 0 !important; border: 0 !important; box-shadow: none !important; }

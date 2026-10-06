@@ -3770,3 +3770,5 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .ln-stream .ln-logo.pick img { transform: scale(1.18); }
 @media (max-width: 700px) { .ln-stream .ln-logo, .ln-stream .ln-logo:hover { width: 128px !important; height: 72px !important; flex-basis: 128px !important; }
   .ln-stream .ln-logo img { max-height: 44px !important; max-width: 104px !important; } }
+.ln-stream.held .ln-track { animation-play-state: paused !important; }
+.ln-stream .ln-logo.pick { background: #e8e8e8 !important; }

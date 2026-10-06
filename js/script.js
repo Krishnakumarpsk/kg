@@ -898,9 +898,15 @@ document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserv
   else el.classList.remove('sl-in');
 }, { threshold: .2 }).observe(el));
 
-// Brands: clicking a logo pops it while the rows keep scrolling
-document.querySelectorAll('.ln-stream .ln-logo').forEach(l => l.addEventListener('click', () => {
+// Brands: clicking a logo stops its row (logo stays highlighted) while the other rows keep moving; click again to resume
+document.querySelectorAll('.ln-stream .ln-logo').forEach(l => l.addEventListener('click', e => {
+  e.stopPropagation();
+  const row = l.closest('.ln-stream'), was = l.classList.contains('pick');
   document.querySelectorAll('.ln-logo.pick').forEach(x => x.classList.remove('pick'));
-  l.classList.add('pick');
-  setTimeout(() => l.classList.remove('pick'), 1200);
+  document.querySelectorAll('.ln-stream.held').forEach(r => r.classList.remove('held'));
+  if (!was) { l.classList.add('pick'); row.classList.add('held'); }
 }));
+document.addEventListener('click', () => {
+  document.querySelectorAll('.ln-logo.pick').forEach(x => x.classList.remove('pick'));
+  document.querySelectorAll('.ln-stream.held').forEach(r => r.classList.remove('held'));
+});

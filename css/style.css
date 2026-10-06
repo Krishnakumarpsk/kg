@@ -3704,3 +3704,5 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .vision .arrow span { font-size: 12.5px !important; margin-top: 4px; }
 .vision .arrow-col p, .vision .arrow-col p:hover, .vision .arrow-col p:focus, .vision .arrow-col p:active {
   background: transparent !important; box-shadow: none !important; border: 0 !important; padding: 0 4px !important; margin: 16px 0 0 !important; cursor: default; }
+.vision .mission, .vision .mission:hover { background: transparent !important; border: 0 !important; box-shadow: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+.vision .mission::before, .vision .mission::after { display: none !important; }

@@ -3931,3 +3931,8 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 .modal-side ul li i { flex: 0 0 auto; margin-top: .2em; }
 @media (min-width: 901px) { #ada .ada-img { position: relative; left: -38px; } }
 @media (min-width: 901px) { #ada .ada-head .biz-intro { margin-left: 76px !important; } }
+
+/* ADA foot: plain text, no cards/boxes/animation */
+#ada .red-small, #ada .ada-line span, #ada .red-small:hover, #ada .ada-line span:hover, #ada .ada-line span:focus, #ada .ada-line span:active {
+  box-shadow: none !important; border: 0 !important; background: transparent !important; animation: none !important; transform: none !important; outline: none !important; transition: none !important; }
+#ada .red-small::before, #ada .red-small::after, #ada .ada-line span::before, #ada .ada-line span::after { display: none !important; }

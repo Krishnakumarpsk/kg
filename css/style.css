@@ -3973,3 +3973,4 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
   #ada .ada-foot > div:first-child { flex: 1 1 auto !important; }
   #ada .ada-foot .stat-pill { left: 0 !important; margin-left: auto !important; }
 }
+#ada .ada-img, #ada .ada-img img, #ada .ada-course .ada-img img { border-radius: 0 !important; }

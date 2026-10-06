@@ -3802,3 +3802,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #testimonials .rv-tag { background: #f2f2f2 !important; background-image: none !important; }
 .ft-logo .group-logo { transform: none !important; margin: 0 0 18px !important; padding: 10px 14px !important; display: inline-flex !important; background: #fff; }
 .ft-logo .group-logo-img { height: 64px !important; width: auto !important; max-width: 100% !important; aspect-ratio: auto !important; object-fit: contain !important; display: block; }
+.cf-full textarea { min-height: 180px !important; }

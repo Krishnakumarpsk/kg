@@ -3793,3 +3793,5 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .rate-good { --rate: #22a447; }
 .rate-low .fa-star:not(.off), .rate-mid .fa-star:not(.off), .rate-good .fa-star:not(.off) { color: var(--rate) !important; }
 .rv-bar.rate-low .rv-track b, .rv-bar.rate-mid .rv-track b, .rv-bar.rate-good .rv-track b { background: var(--rate) !important; background-image: none !important; }
+#testimonials, #testimonials.testimonials { background: #fff !important; background-image: none !important; }
+#testimonials::before, #testimonials::after { display: none !important; }

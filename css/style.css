@@ -3467,3 +3467,13 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 @keyframes stPop { from { opacity: 0; transform: translateY(30px) scale(.6); } to { opacity: 1; transform: none; } }
 @keyframes stUp { from { opacity: 0; transform: translateY(14px); letter-spacing: 3px; } to { opacity: 1; transform: none; letter-spacing: normal; } }
 @keyframes stShine { from { background-position: 120% center; } to { background-position: -120% center; } }
+
+/* Company cards: no back box, no animations, no corner lines; logo zooms lightly on hover */
+.company-cards .c-card, .companies.co-in .company-cards .c-card,
+.company-cards .c-card:hover, .company-cards .c-card:focus, .company-cards .c-card:active {
+  background: transparent !important; box-shadow: none !important; border: 0 !important; outline: none !important;
+  animation: none !important; transform: none !important; opacity: 1 !important; scale: none !important; }
+.company-cards .c-card::before, .company-cards .c-card::after { display: none !important; }
+.company-cards .c-card img, .companies.co-in .company-cards .c-card img {
+  animation: none !important; opacity: 1 !important; filter: none !important; transform: none !important; transition: transform .4s ease !important; }
+.company-cards .c-card:hover img { transform: scale(1.06) !important; }

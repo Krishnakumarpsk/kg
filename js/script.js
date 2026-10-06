@@ -83,19 +83,14 @@ document.querySelectorAll('.reveal, [data-count]:not(.exp-card [data-count])').f
 
   // great-circle points, longitudes unwrapped so lines never jump across the map edge
   const rad = d => d * Math.PI / 180, deg = r => r * 180 / Math.PI;
+  // straight route on the map (simple interpolation), km kept for flight duration
   function greatCircle(a, b, n) {
+    const pts = [];
+    const my = lat => Math.log(Math.tan(Math.PI / 4 + rad(lat) / 2)), iy = y => deg(2 * Math.atan(Math.exp(y)) - Math.PI / 2);
+    const ya = my(a[0]), yb = my(b[0]);
+    for (let i = 0; i <= n; i++) { const f = i / n; pts.push([iy(ya + (yb - ya) * f), a[1] + (b[1] - a[1]) * f]); }
     const [la1, lo1, la2, lo2] = [rad(a[0]), rad(a[1]), rad(b[0]), rad(b[1])];
     const d = 2 * Math.asin(Math.sqrt(Math.sin((la2 - la1) / 2) ** 2 + Math.cos(la1) * Math.cos(la2) * Math.sin((lo2 - lo1) / 2) ** 2));
-    const pts = [];
-    for (let i = 0; i <= n; i++) {
-      const f = i / n, A = Math.sin((1 - f) * d) / Math.sin(d), B = Math.sin(f * d) / Math.sin(d);
-      const x = A * Math.cos(la1) * Math.cos(lo1) + B * Math.cos(la2) * Math.cos(lo2);
-      const y = A * Math.cos(la1) * Math.sin(lo1) + B * Math.cos(la2) * Math.sin(lo2);
-      const z = A * Math.sin(la1) + B * Math.sin(la2);
-      let lng = deg(Math.atan2(y, x));
-      if (pts.length) { const prev = pts[pts.length - 1][1]; while (lng - prev > 180) lng -= 360; while (lng - prev < -180) lng += 360; }
-      pts.push([deg(Math.atan2(z, Math.hypot(x, y))), lng]);
-    }
     return { pts, km: d * 6371 };
   }
   const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; // smooth take-off / landing
@@ -160,19 +155,10 @@ document.querySelectorAll('.reveal, [data-count]:not(.exp-card [data-count])').f
       .addTo(map).bindTooltip('Tiruppur, India', { permanent: true, direction: 'right', offset: [12, 0], className: 'map-tip hub' });
     await wait(1100);
 
-    // 3–8s: first aircraft (UK), camera eases out to follow the journey
-    map.flyTo([30, 40], 3.3, { duration: 4.5, easeLinearity: .2 });
-    launch(0, 6500);
-    await wait(4200);
+    // finish the camera move first (lines can't draw while the map is zooming), then fly one aircraft at a time
+    await fly([22, 40], 2.4, 3);
+    for (let i = 0; i < DEST.length; i++) { if (i) await wait(400); launch(i, i ? 0 : 6500); while (active.length) await wait(200); }
 
-    // 8–15s+: further aircraft depart at different times
-    map.flyTo([22, 40], 2.4, { duration: 5, easeLinearity: .2 });
-    // one flight at a time: wait for each to land, then the next departs from Tiruppur
-    while (active.length) await wait(200);
-    for (let i = 1; i < DEST.length; i++) { await wait(400); launch(i); while (active.length) await wait(200); }
-
-    // zoom out to reveal the complete network
-    map.flyTo([18, 35], 1.9, { duration: 4, easeLinearity: .2 });
     // tour finished: keep all red routes on the map, no overlay, no restart
   }
 
@@ -426,7 +412,7 @@ const REVIEWS = [
   const dd = document.querySelector('.nav-dd'), modal = document.getElementById('pg-modal');
   if (!dd || !modal) return;
   const CATS = {
-    kids: ['Kidswear', 'assets/kids/kids', 6, 'jpeg'],
+    kids: ['Kidswear', 'assets/kids/kids', 11, 'jpeg'],
     school: ['School Uniforms', 'assets/school/school', 10, 'jpeg'],
     corporate: ['Corporate Uniforms', 'assets/corporate/corp', 3, 'jpeg'],
     tshirts: ['Printed T-Shirts', 'assets/tshirts/tee', 6, 'png']
@@ -659,7 +645,7 @@ document.querySelectorAll('.svc-grid').forEach(grid => {
     cards[cur].classList.add('on');
     dots.forEach((d, k) => d.classList.toggle('on', k === cur));
     clearTimeout(timer);
-    timer = setTimeout(() => show((cur + 1) % cards.length, 1), 3500);
+    timer = setTimeout(() => show((cur + 1) % cards.length, 1), 6500);
   };
   grid.querySelector('.next').addEventListener('click', () => show((cur + 1) % cards.length, 1));
   grid.querySelector('.prev').addEventListener('click', () => show((cur - 1 + cards.length) % cards.length, -1));
@@ -848,4 +834,60 @@ document.querySelectorAll('#kavisuga .ksf2-lead, #kavisuga .ksf2-text').forEach(
     if (e.isIntersecting && e.intersectionRatio >= .2) sec.classList.add('vx-in');
     else if (e.intersectionRatio === 0) sec.classList.remove('vx-in');
   }, { threshold: [0, .2] }).observe(sec);
+})();
+
+// Services: left panel follows the active slide (text + colours)
+document.querySelectorAll('#services .svs-panel').forEach(panel => {
+  const sec = panel.closest('section'), cards = [...sec.querySelectorAll('.svc-card')];
+  const title = panel.querySelector('.svs-ptitle'), desc = panel.querySelector('.svs-pdesc'), count = panel.querySelector('.svs-pcount');
+  let last = -1;
+  const sync = () => {
+    const i = cards.findIndex(c => c.classList.contains('on'));
+    if (i < 0 || i === last) return;
+    last = i;
+    const info = cards[i].querySelector('.svc-info');
+    title.innerHTML = info.querySelector('h3').innerHTML;
+    desc.innerHTML = info.querySelector('p').innerHTML;
+    count.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(cards.length).padStart(2, '0');
+    sec.dataset.sv = i + 1;
+    panel.classList.remove('in'); void panel.offsetWidth; panel.classList.add('in');
+  };
+  const mo = new MutationObserver(sync);
+  cards.forEach(c => mo.observe(c, { attributes: true, attributeFilter: ['class'] }));
+  const first = cards[0].querySelector('.svc-info');
+  title.innerHTML = first.querySelector('h3').innerHTML; desc.innerHTML = first.querySelector('p').innerHTML;
+  count.textContent = '01 / ' + String(cards.length).padStart(2, '0');
+});
+
+// Founders: click card to open detail overlay
+(() => {
+  const cards = document.querySelectorAll('.fd-card');
+  if (!cards.length) return;
+  const modal = document.createElement('div');
+  modal.className = 'fd-modal';
+  modal.innerHTML = '<div class="fd-panel" role="dialog" aria-modal="true"><button class="fd-close" aria-label="Close">&times;</button><img alt=""><div class="fd-body"></div></div>';
+  document.body.appendChild(modal);
+  const img = modal.querySelector('img'), body = modal.querySelector('.fd-body');
+  let last;
+  const close = () => { modal.classList.remove('show'); document.body.classList.remove('fd-lock'); last && last.focus(); };
+  const open = card => {
+    last = card;
+    const src = card.querySelector('img');
+    img.src = src.src; img.alt = src.alt;
+    body.innerHTML = '';
+    ['h3', '.fd-role', '.fd-bio'].forEach(s => body.appendChild(card.querySelector(s).cloneNode(true)));
+    const h = body.querySelector('h3');
+    h.innerHTML = [...h.textContent].map((c, i) => c === ' ' ? ' ' : `<span class="ch" style="transition-delay:${0.1 + i * 0.03}s">${c}</span>`).join('');
+    body.querySelectorAll('.fd-bio > *').forEach((el, i) => el.style.transitionDelay = (0.7 + i * 0.15) + 's');
+    modal.querySelector('.fd-panel').scrollTop = 0;
+    document.body.classList.add('fd-lock');
+    requestAnimationFrame(() => modal.classList.add('show'));
+    modal.querySelector('.fd-close').focus();
+  };
+  cards.forEach(card => {
+    card.addEventListener('click', () => open(card));
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); } });
+  });
+  modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('.fd-close')) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) close(); });
 })();

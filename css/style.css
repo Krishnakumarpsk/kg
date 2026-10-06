@@ -3450,3 +3450,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .eco-text:hover, .exp-card:hover, .exp-card:focus, .exp-card:active {
   animation: none !important; transition: none !important; transform: none !important; opacity: 1 !important; filter: none !important; }
 .exp-card::before, .exp-card::after, .eco-text::before, .eco-text::after { animation: none !important; display: none !important; }
+
+/* Stats + eco-text: no boxes, plain text */
+.eco-text, .exp-card, .exp-card:hover, .exp-card:focus, .exp-card:active {
+  background: transparent !important; border: 0 !important; box-shadow: none !important; }

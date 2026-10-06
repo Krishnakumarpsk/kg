@@ -3946,3 +3946,9 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 #ada .ada-line { white-space: nowrap !important; }
 #ada .ada-line span { font-size: clamp(13px, 1.6vw, 24px) !important; }
 #ada .ada-foot > div:first-child { max-width: none !important; width: auto !important; flex: 1 1 auto !important; }
+/* ADA foot: no red rule, spaced phrases, 1000+ pill on the right */
+#ada .ada-foot > div:first-child { border-bottom: 0 !important; padding-bottom: 0 !important; }
+#ada .ada-line span { margin-right: 2.2em !important; }
+#ada .ada-line span:last-child { margin-right: 0 !important; }
+#ada .ada-foot { display: flex !important; flex-wrap: wrap; align-items: center; justify-content: space-between !important; gap: 24px; }
+#ada .ada-foot .stat-pill { margin: 0 0 0 auto !important; align-self: center; }

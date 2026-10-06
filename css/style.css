@@ -3574,3 +3574,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   animation: none !important; transform: none !important; scale: none !important; opacity: 1 !important; }
 #ada .ada-head .biz-logo::before, #ada .ada-head .biz-logo::after, #ada .ada-img::before, #ada .ada-img::after,
 #ada .course-box::before, #ada .course-box::after { animation: none !important; display: none !important; }
+/* ADA section: no boxes */
+#ada .ada-head, #ada .ada-head .biz-logo, #ada .ada-head .biz-intro, #ada .ada-head h2,
+#ada .ada-head .biz-logo:hover, #ada .ada-head .biz-intro:hover { box-shadow: none !important; border-color: transparent !important; }
+#ada .ada-head { background: #f3f3f3 !important; }
+#ada .ada-head .biz-logo, #ada .ada-head .biz-intro, #ada .ada-head h2 { background: transparent !important; background-image: none !important; animation: none !important; transform: none !important; }
+#ada .ada-head .biz-logo::before, #ada .ada-head .biz-logo::after, #ada .ada-head .biz-intro::before, #ada .ada-head .biz-intro::after, #ada .ada-head h2::before, #ada .ada-head h2::after { display: none !important; }
+#ada .ada-head h2 { padding-left: 0 !important; padding-right: 0 !important; }
+#ada .ada-head .biz-logo img { mix-blend-mode: normal !important; max-width: 220px !important; }
+#ada .ada-course, #ada .ada-img, #ada .course-box, #ada .course-list li, #ada .course-list li.on, #ada .course-list li:hover, #ada .ada-img:hover, #ada .course-box:hover {
+  background: transparent !important; box-shadow: none !important; border-color: transparent !important; }
+#ada .ada-img { padding: 0 !important; }
+#ada .ada-img img { border-radius: 18px; }
+#ada .course-list li.on, #ada .course-list li:hover { color: var(--red) !important; }

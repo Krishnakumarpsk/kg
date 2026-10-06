@@ -3737,3 +3737,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .svs-split .svc-card img, #services .svc-slider .svc-card img { object-fit: contain !important; background: #fff; }
 @media (min-width: 901px) { .svs-panel { margin-left: 60px !important; } }
 @media (min-width: 901px) { .svs-split { margin-top: 4px !important; } .svs-split .svc-grid.svc-slider { margin-top: -24px !important; } }
+@media (min-width: 901px) {
+  .svs-split .svc-grid.svc-slider { width: min(540px, calc(100vh - 230px)) !important; max-width: 540px !important; }
+}
+.svs-split .svc-grid.svc-slider { overflow: hidden !important; padding: 0 !important; background: #fff; }
+.svs-split .svc-card { inset: 0 !important; height: 100% !important; overflow: hidden !important; }

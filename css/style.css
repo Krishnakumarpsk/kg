@@ -3929,10 +3929,3 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 @media (min-width: 901px) { .ft-about { margin-left: -38px !important; } }
 .modal-side ul li { display: flex !important; align-items: flex-start; gap: 10px; text-align: left; }
 .modal-side ul li i { flex: 0 0 auto; margin-top: .2em; }
-
-/* ADA foot: plain text pills, no cards/animation; mild grey on hover/click */
-#ada .red-small, #ada .ada-line span, #ada .red-small:hover, #ada .ada-line span:hover {
-  box-shadow: none !important; border: 0 !important; background: transparent !important; animation: none !important; transform: none !important; outline: none !important; }
-#ada .red-small::before, #ada .red-small::after, #ada .ada-line span::before, #ada .ada-line span::after { display: none !important; }
-#ada .ada-line span { border-radius: 10px !important; cursor: pointer; transition: background-color .25s ease !important; }
-#ada .ada-line span:hover, #ada .ada-line span:focus, #ada .ada-line span:active { background: #f2f2f2 !important; }

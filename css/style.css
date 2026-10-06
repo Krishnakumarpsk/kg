@@ -3487,3 +3487,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 
 /* Company cards: static; logo zooms OUT slowly on hover / click */
 .company-cards .c-card:hover img, .company-cards .c-card:focus img, .company-cards .c-card:active img { transform: scale(.92) !important; }
+
+/* LBG section: no boxes */
+#lbg .biz-logo, #lbg .biz-logo img, #lbg .biz-intro, #lbg .biz-intro h2, #lbg .lbg-image-section, #lbg .lbg-slider, #lbg .lbg-track img, #lbg .biz-list,
+#lbg .biz-logo:hover, #lbg .biz-intro:hover, #lbg .biz-intro h2:hover, #lbg .lbg-slider:hover, #lbg .biz-list:hover {
+  background: transparent !important; box-shadow: none !important; border: 0 !important; }
+#lbg .biz-intro h2 { padding-left: 0 !important; padding-right: 0 !important; }
+#lbg .lbg-slider { padding: 0 !important; }
+#lbg .biz-logo img { mix-blend-mode: multiply; }

@@ -3629,3 +3629,21 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 @media (min-width: 901px) { #lbg .biz-list.plain { justify-self: start !important; margin-left: 51px !important; } }
 @media (min-width: 901px) { #lbg .biz-head .biz-intro { margin-left: 40px !important; } }
 #lbg .biz-intro, #lbg .biz-intro:active, #lbg .biz-intro:hover, #lbg .biz-intro h2:active, #lbg .biz-intro h2:hover, #lbg .biz-intro h2.clay-pop { scale: none !important; box-shadow: none !important; background: transparent !important; cursor: default; }
+
+/* Founders: no card, square photo beside the details */
+.fd-grid { grid-template-columns: 1fr !important; max-width: 1000px !important; gap: 50px !important; }
+.fd-card, .fd-card:hover, .fd-card:focus-visible { background: transparent !important; border: 0 !important; box-shadow: none !important;
+  backdrop-filter: none !important; -webkit-backdrop-filter: none !important; transform: none !important; padding: 0 !important;
+  display: grid; grid-template-columns: 260px 1fr; grid-template-rows: auto auto 1fr; column-gap: 40px; text-align: left; align-items: start; }
+.fd-card .fd-photo { grid-row: 1 / 4; width: 260px; height: 260px !important; aspect-ratio: 1 / 1; border-radius: 14px !important; margin: 0 !important; background: none !important; }
+.fd-card .fd-photo img { object-fit: cover !important; object-position: top center; }
+.fd-card h3 { margin: 6px 0 4px; font-size: 24px; }
+.fd-card .fd-role { margin-bottom: 14px; }
+.fd-summary p { color: var(--text); font-size: 15px; line-height: 1.7; margin: 0 0 10px; }
+.fd-more { color: var(--red); font-weight: 600; font-size: 14px; }
+.fd-card:hover .fd-more { text-decoration: underline; }
+@media (max-width: 720px) {
+  .fd-card, .fd-card:hover { grid-template-columns: 1fr; text-align: center; }
+  .fd-card .fd-photo { grid-row: auto; width: 220px; height: 220px !important; margin: 0 auto 16px !important; }
+  .fd-summary p { text-align: left; }
+}

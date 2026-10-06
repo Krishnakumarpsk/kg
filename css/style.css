@@ -3683,3 +3683,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
   .fd-card .fd-photo, .fd-card h3, .fd-card .fd-role, .fd-card .fd-line, .fd-card .fd-summary { grid-column: 1 !important; grid-row: auto !important; }
   .fd-card .fd-photo { width: 240px !important; height: 240px !important; }
 }
+.fd-grid { margin-top: 40px !important; }
+.fd-card:first-child .fd-photo { background: rgb(249,247,248) !important; }
+.fd-card:first-child .fd-photo img { object-fit: contain !important; object-position: center bottom !important; }

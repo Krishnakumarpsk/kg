@@ -3403,3 +3403,17 @@ body.fd-lock { overflow: hidden; }
 .fd-panel .fd-quote { background: linear-gradient(90deg, var(--red-dark), var(--red), var(--red-dark)); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: fdShine 3s linear infinite; }
 @keyframes fdShine { to { background-position: 200% center; } }
 .vision .arrow-col p { -webkit-tap-highlight-color: transparent; }
+
+/* Company cards: smaller */
+.company-cards .c-card { padding: 14px 16px !important; }
+.company-cards .c-card img { height: 150px !important; padding: 4px !important; }
+.company-cards { max-width: 980px !important; }
+
+/* Mobile: Kavisuga & ADA sections stack in one column */
+@media (max-width: 900px) {
+  .ksf2-row { grid-template-columns: 1fr !important; row-gap: 20px; padding: 20px 16px !important; }
+  .ksf2-certs { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  #ada .ada-head { grid-template-columns: 1fr !important; gap: 20px; padding: 20px 16px !important; }
+  #ada .ada-head .biz-logo { min-height: 0 !important; height: auto !important; padding: 16px; }
+  #ada .ada-head .biz-logo img { max-height: 160px; margin: 0 auto; }
+}

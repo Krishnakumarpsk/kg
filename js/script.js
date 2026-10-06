@@ -892,7 +892,7 @@ document.querySelectorAll('#services .svs-panel').forEach(panel => {
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) close(); });
 })();
 
-// Stats: start text animations when the section scrolls into view
+// Stats: play text animations every time the section scrolls into view
 document.querySelectorAll('.exp-stats').forEach(el => new IntersectionObserver((en, obs) => {
-  if (en[0].isIntersecting) { el.classList.add('tx-in'); obs.disconnect(); }
+  el.classList.toggle('tx-in', en[0].isIntersecting); // replay each time it comes into view
 }, { threshold: .3 }).observe(el));

@@ -3621,3 +3621,4 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .biz-list.plain ul li::before { display: block !important; content: "·" !important; position: absolute; left: 16px; top: 50%; transform: translateY(-55%) !important;
   color: #9a9a9a !important; font-size: 18px; }
 #lbg .biz-list.plain ul li.on { background-color: #f2f2f2 !important; border-color: #e0e0e0 !important; color: var(--red) !important; }
+#kavisuga .ksf2-gif, #kavisuga .ksf2-gif img, #kavisuga .ksf2-media, #kavisuga .ksf2-media > * { border-radius: 0 !important; box-shadow: none !important; border: 0 !important; }

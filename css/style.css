@@ -3719,3 +3719,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .svs-ptitle { font-size: clamp(26px, 2.8vw, 40px) !important; }
 .svs-pdesc { font-size: 15px !important; }
 .svs-split .svc-grid.svc-slider, .svs-split .svc-card { border: 0 !important; box-shadow: none !important; outline: 0 !important; }
+@media (min-width: 901px) {
+  .svs-split { grid-template-columns: minmax(0, .8fr) minmax(0, 720px) !important; }
+  .svs-split .svc-grid.svc-slider { width: min(100%, 720px) !important; }
+}
+.svs-split .svc-grid.svc-slider, .svs-split .svc-card, .svs-split .svc-card img { border-radius: 0 !important; }

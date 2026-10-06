@@ -3930,3 +3930,4 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 .modal-side ul li { display: flex !important; align-items: flex-start; gap: 10px; text-align: left; }
 .modal-side ul li i { flex: 0 0 auto; margin-top: .2em; }
 @media (min-width: 901px) { #ada .ada-img { position: relative; left: -38px; } }
+@media (min-width: 901px) { #ada .ada-head .biz-intro { margin-left: 38px !important; } }

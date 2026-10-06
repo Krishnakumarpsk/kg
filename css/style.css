@@ -3827,3 +3827,16 @@ textarea[name="review"] { min-height: 110px !important; }
 /* Review popup sits above the sticky menu bar; wider form */
 .rv-modal { z-index: 3000 !important; }
 .rv-modal .rv-form { width: min(640px, 100%) !important; max-width: 640px !important; padding-left: 34px !important; padding-right: 34px !important; }
+
+/* Review popup: square corners */
+.rv-modal .rv-form { border-radius: 0 !important; }
+/* Colour by value: stars 1 red / 2-3 yellow / 4-5 green; percentages <=50 red / 51-80 yellow / >80 green */
+.rv-pick button { color: #e2e2e2; }
+.rv-pick.rate-low button.on, .rv-pick.rate-mid button.on, .rv-pick.rate-good button.on { color: var(--rate) !important; }
+.rv-range.rate-low b, .rv-range.rate-mid b, .rv-range.rate-good b { color: var(--rate) !important; }
+.rv-range.rate-low input, .rv-range.rate-mid input, .rv-range.rate-good input { background: linear-gradient(90deg, var(--rate) var(--v, 90%), #e2e2e2 var(--v, 90%)) !important; }
+.rv-range.rate-low input::-webkit-slider-thumb, .rv-range.rate-mid input::-webkit-slider-thumb, .rv-range.rate-good input::-webkit-slider-thumb { background: var(--rate) !important; }
+.rv-range.rate-low input::-moz-range-thumb, .rv-range.rate-mid input::-moz-range-thumb, .rv-range.rate-good input::-moz-range-thumb { background: var(--rate) !important; }
+.rv-ring.rate-low .fg, .rv-ring.rate-mid .fg, .rv-ring.rate-good .fg { stroke: var(--rate) !important; }
+.rv-ring.rate-low b, .rv-ring.rate-mid b, .rv-ring.rate-good b { color: var(--rate) !important; }
+.rv-card footer b.rate-low, .rv-card footer b.rate-mid, .rv-card footer b.rate-good { color: var(--rate) !important; }

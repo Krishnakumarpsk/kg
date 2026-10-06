@@ -317,6 +317,7 @@ const REVIEWS = [
   if (!list) return;
   const esc = v => String(v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const rateCls = n => n >= 4 ? 'rate-good' : n >= 2 ? 'rate-mid' : 'rate-low'; // 1 red, 2-3 yellow, 4-5 green
+  const pctCls = v => v > 80 ? 'rate-good' : v > 50 ? 'rate-mid' : 'rate-low'; // <=50 red, 51-80 yellow, >80 green
   const starRow = n => `<span class="${rateCls(n)}">` + [1, 2, 3, 4, 5].map(i => `<i class="fa-solid fa-star${i <= n ? '' : ' off'}"></i>`).join('') + '</span>';
   const initials = n => n.trim().split(/\s+/).slice(0, 2).map(w => w[0].toUpperCase()).join('');
   const fmtDate = d => new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -338,7 +339,7 @@ const REVIEWS = [
     }).join('');
     document.getElementById('rv-rings').innerHTML = [['response', 'Response'], ['quality', 'Quality'], ['delivery', 'Delivery']].map(([k, l]) => {
       const v = pct(k);
-      return `<div class="rv-ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="bg"/><circle cx="50" cy="50" r="42" class="fg" style="--p:${v}"/></svg><b>${v}%</b><span>${l}</span></div>`;
+      return `<div class="rv-ring ${pctCls(v)}"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="bg"/><circle cx="50" cy="50" r="42" class="fg" style="--p:${v}"/></svg><b>${v}%</b><span>${l}</span></div>`;
     }).join('');
 
     const sorted = all.slice().sort((a, b) => b.date.localeCompare(a.date));
@@ -348,7 +349,7 @@ const REVIEWS = [
         <header><span class="rv-av">${esc(initials(r.name))}</span><div><b>${esc(r.name)}</b><small>${esc(r.company || '')}</small></div></header>
         <div class="rv-stars">${starRow(r.rating)}</div>
         <p>${esc(r.text)}</p>
-        <footer><span>Response <b>${r.response}%</b></span><span>Quality <b>${r.quality}%</b></span><span>Delivery <b>${r.delivery}%</b></span><time>${fmtDate(r.date)}</time></footer>
+        <footer><span>Response <b class="${pctCls(r.response)}">${r.response}%</b></span><span>Quality <b class="${pctCls(r.quality)}">${r.quality}%</b></span><span>Delivery <b class="${pctCls(r.delivery)}">${r.delivery}%</b></span><time>${fmtDate(r.date)}</time></footer>
       </article>`).join('');
     // duplicate the cards so the horizontal flow loops seamlessly
     list.innerHTML = `<div class="rv-flowtrack" style="--dur:${sorted.length * 8}s">${cards}${cards.replace(/<article /g, '<article aria-hidden="true" ')}</div>`;
@@ -369,7 +370,8 @@ const REVIEWS = [
 
   let rating = 5;
   const stars = [...form.querySelectorAll('.rv-pick button')];
-  const paint = v => stars.forEach(b => b.classList.toggle('on', +b.dataset.v <= v));
+  const pick = form.querySelector('.rv-pick');
+  const paint = v => { stars.forEach(b => b.classList.toggle('on', +b.dataset.v <= v)); pick.className = 'rv-pick ' + rateCls(v); };
   stars.forEach(b => {
     b.addEventListener('click', () => { rating = +b.dataset.v; paint(rating); });
     b.addEventListener('mouseenter', () => paint(+b.dataset.v));
@@ -378,7 +380,8 @@ const REVIEWS = [
   paint(rating);
   form.querySelectorAll('input[type=range]').forEach(r => {
     const out = form.querySelector(`[data-out="${r.name}"]`);
-    const upd = () => { out.textContent = r.value; r.style.setProperty('--v', (r.value - r.min) / (r.max - r.min) * 100 + '%'); };
+    const box = r.closest('.rv-range');
+    const upd = () => { out.textContent = r.value; r.style.setProperty('--v', (r.value - r.min) / (r.max - r.min) * 100 + '%'); box.className = 'rv-range ' + pctCls(+r.value); };
     r.addEventListener('input', upd); upd();
   });
 

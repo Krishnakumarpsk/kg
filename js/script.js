@@ -952,7 +952,8 @@ document.querySelectorAll('a[href="#founders"]').forEach(a => a.addEventListener
   if (!sec) return;
   e.preventDefault();
   const bar = document.querySelector('.main-nav');
-  const barH = bar && getComputedStyle(bar).position === 'fixed' ? bar.getBoundingClientRect().height : 0;
+  // the bar only becomes fixed after scrolling, so fall back to its fixed height (~98px)
+  const barH = bar && getComputedStyle(bar).position === 'fixed' ? bar.getBoundingClientRect().height : 98;
   scrollTo({ top: sec.getBoundingClientRect().top + scrollY - barH + 1, behavior: 'smooth' });
   history.replaceState(null, '', '#founders');
 }));

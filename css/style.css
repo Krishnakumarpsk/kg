@@ -3803,3 +3803,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .ft-logo .group-logo { transform: none !important; margin: 0 0 18px !important; padding: 10px 14px !important; display: inline-flex !important; background: #fff; }
 .ft-logo .group-logo-img { height: 64px !important; width: auto !important; max-width: 100% !important; aspect-ratio: auto !important; object-fit: contain !important; display: block; }
 .cf-full textarea { min-height: 180px !important; }
+
+/* Contact page header: shorter */
+.ct-hero { padding: 22px 24px 26px !important; min-height: 0 !important; }
+.ct-hero .group-logo { margin-top: 34px !important; padding: 6px 12px 6px 6px !important; }
+.ct-hero .group-logo-img { height: 76px !important; width: auto !important; }
+.ct-hero .bni-badge { top: 20px !important; width: 84px !important; }
+.ct-hero .main-nav { top: 22px !important; }
+@media (max-width: 700px) { .ct-hero .group-logo-img { height: 56px !important; } .ct-hero .group-logo { margin-top: 56px !important; } }

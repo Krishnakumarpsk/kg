@@ -3429,3 +3429,7 @@ body.fd-lock { overflow: hidden; }
 * { -webkit-tap-highlight-color: rgba(0,0,0,.05) !important; }
 a:focus, button:focus, [tabindex]:focus, div:focus, p:focus { outline: none; }
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid #bdbdbd; outline-offset: 2px; }
+
+/* Founders: plain white background */
+.founders { background: #fff !important; }
+.founders::before, .founders::after { display: none !important; }

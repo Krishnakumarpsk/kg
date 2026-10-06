@@ -3543,3 +3543,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .lbg-slider { max-width: 520px !important; }
 #lbg .biz-list { justify-self: center; }
 @media (max-width: 900px) { #lbg .lbg-body { grid-template-columns: 1fr !important; } }
+
+/* Kavisuga section: no boxes */
+#kavisuga .ksf2-logo, #kavisuga .ksf2-intro, #kavisuga .ksf2-intro h2, #kavisuga .ksf2-media, #kavisuga .ksf2-gif,
+#kavisuga .ksf2-certs > *, #kavisuga .ksf2-focus, #kavisuga .ksf2-focus li, #kavisuga .ksf2-cert-text,
+#kavisuga .ksf2-logo:hover, #kavisuga .ksf2-intro:hover, #kavisuga .ksf2-focus li:hover, #kavisuga .ksf2-certs > *:hover {
+  background: transparent !important; box-shadow: none !important; border-color: transparent !important; }
+#kavisuga .ksf2-logo::before, #kavisuga .ksf2-logo::after, #kavisuga .ksf2-intro::before, #kavisuga .ksf2-intro::after,
+#kavisuga .ksf2-focus::before, #kavisuga .ksf2-focus::after { display: none !important; }
+#kavisuga .ksf2-intro h2 { padding-left: 0 !important; padding-right: 0 !important; }
+#kavisuga .ksf2-gif { padding: 0 !important; }
+#kavisuga .ksf2-gif img { border-radius: 16px; }
+#kavisuga .ksf2-logo img { mix-blend-mode: normal !important; max-width: 280px; }
+#kavisuga .ksf2-cert-text { padding-left: 0 !important; }

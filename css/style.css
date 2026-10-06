@@ -3816,3 +3816,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 textarea[name="review"] { min-height: 150px !important; }
 .rv-actions { gap: 10px !important; margin-top: 14px !important; }
 .rv-actions .rv-outline, .rv-actions .rv-btn { padding: 9px 20px !important; font-size: 14px !important; min-height: 0 !important; height: auto !important; flex: 0 0 auto !important; width: auto !important; }
+
+/* Review popup: always fully visible, buttons centred */
+.rv-modal { align-items: center !important; justify-content: center !important; padding: 16px !important; overflow: hidden; }
+.rv-modal .rv-form { max-height: calc(100vh - 32px) !important; overflow-y: auto !important; margin: auto !important; box-sizing: border-box;
+  padding-top: 22px !important; padding-bottom: 20px !important; }
+.rv-modal .rv-form label { margin-bottom: 8px !important; }
+textarea[name="review"] { min-height: 110px !important; }
+.rv-actions { justify-content: center !important; }

@@ -935,13 +935,12 @@ document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserv
   document.addEventListener('click', release);
 })();
 
-// "Contact Us" links: scroll so the whole footer is in view (footer sits at the very bottom of the page)
+// "Contact Us" links: scroll so the "follow us on" section starts just below the sticky menu bar
 document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener('click', e => {
-  const ft = document.getElementById('contact');
-  if (!ft) return;
+  const target = document.querySelector('.follow') || document.getElementById('contact');
+  if (!target) return;
   e.preventDefault();
-  const fitsOnScreen = ft.offsetHeight <= innerHeight;
-  const y = fitsOnScreen ? document.documentElement.scrollHeight - innerHeight : ft.getBoundingClientRect().top + scrollY;
-  scrollTo({ top: y, behavior: 'smooth' });
+  const bar = document.querySelector('.main-nav'), barH = bar && getComputedStyle(bar).position === 'fixed' ? bar.offsetHeight : 0;
+  scrollTo({ top: target.getBoundingClientRect().top + scrollY - Math.max(barH, 90) + 10, behavior: 'smooth' });
   history.replaceState(null, '', '#contact');
 }));

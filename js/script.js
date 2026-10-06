@@ -945,3 +945,14 @@ document.querySelectorAll('a[href="#contact"]').forEach(a => a.addEventListener(
   scrollTo({ top: target.getBoundingClientRect().top + scrollY - Math.max(barH, 90) + 10, behavior: 'smooth' });
   history.replaceState(null, '', '#contact');
 }));
+
+// "Founders" links: land exactly on the section, directly under the sticky menu bar
+document.querySelectorAll('a[href="#founders"]').forEach(a => a.addEventListener('click', e => {
+  const sec = document.getElementById('founders');
+  if (!sec) return;
+  e.preventDefault();
+  const bar = document.querySelector('.main-nav');
+  const barH = bar && getComputedStyle(bar).position === 'fixed' ? bar.getBoundingClientRect().height : 0;
+  scrollTo({ top: sec.getBoundingClientRect().top + scrollY - barH + 1, behavior: 'smooth' });
+  history.replaceState(null, '', '#founders');
+}));

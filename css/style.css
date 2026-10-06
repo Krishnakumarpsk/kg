@@ -3877,4 +3877,4 @@ textarea[name="review"] { min-height: 110px !important; }
 .rv-modal .rv-form { max-width: 720px !important; width: min(720px, 100%) !important; }
 #rv-write, #rv-write:hover { animation: none !important; box-shadow: none !important; }
 #rv-write::before, #rv-write::after { display: none !important; animation: none !important; }
-@media (min-width: 901px) { #founders { min-height: calc(100vh - 98px); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; scroll-margin-top: 98px; } }
+@media (min-width: 901px) { #founders { min-height: calc(100vh - 98px); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; } }

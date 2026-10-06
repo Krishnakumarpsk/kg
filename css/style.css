@@ -3962,3 +3962,8 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 #ada .ada-foot > div:first-child { display: flex !important; flex-direction: column; align-items: flex-start !important; justify-content: center; }
 #ada .red-small, #ada .ada-line { margin-left: 0 !important; margin-right: 0 !important; align-self: flex-start !important; width: auto !important; }
 #ada .ada-foot { align-items: center !important; }
+#ada .ada-foot > div:first-child { align-items: center !important; }
+#ada .ada-foot > div:first-child .red-small { align-self: center !important; text-align: center !important; margin-bottom: 14px !important; }
+#ada .ada-foot > div:first-child .ada-line { align-self: center !important; text-align: center !important; }
+#ada .ada-line span { margin-right: 3em !important; }
+#ada .ada-line span:last-child { margin-right: 0 !important; }

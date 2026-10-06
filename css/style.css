@@ -3931,6 +3931,3 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 .modal-side ul li i { flex: 0 0 auto; margin-top: .2em; }
 @media (min-width: 901px) { #ada .ada-img { position: relative; left: -38px; } }
 @media (min-width: 901px) { #ada .ada-head .biz-intro { margin-left: 76px !important; } }
-/* ADA phrases: keep the boxes, no animation */
-#ada .ada-line span, #ada .ada-line span:hover, #ada .ada-line span:focus, #ada .ada-line span:active { animation: none !important; transform: none !important; transition: none !important; opacity: 1 !important; }
-#ada .ada-line span::before, #ada .ada-line span::after { animation: none !important; }

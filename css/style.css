@@ -3609,3 +3609,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 @media (min-width: 901px) { #lbg .lbg-body { margin-left: max(1%, calc((100% - 1150px) / 2 - 80px)) !important; margin-right: auto !important; } }
 #lbg .lbg-slider, #lbg .lbg-slider:hover { border: 0 !important; box-shadow: none !important; background: transparent !important; outline: 0 !important; animation: none !important; border-radius: 0 !important; }
 #lbg .lbg-track img { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+#lbg .biz-list.plain ul { list-style: disc outside !important; padding-left: 22px !important; }
+#lbg .biz-list.plain li { display: list-item !important; list-style: inherit !important; }
+#lbg .biz-list.plain li::marker { color: var(--red); font-size: .7em; }

@@ -3484,3 +3484,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .company-cards .c-card img, .companies.co-in .company-cards .c-card img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1) !important; }
 .company-cards .c-card:hover img { transform: scale(1.06) !important; }
 .company-cards .c-card:nth-child(3) img { height: 185px !important; }
+
+/* Company cards: static; logo zooms OUT slowly on hover / click */
+.company-cards .c-card:hover img, .company-cards .c-card:focus img, .company-cards .c-card:active img { transform: scale(.92) !important; }

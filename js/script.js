@@ -9,7 +9,7 @@ if (!location.hash) {
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.main-nav');
 toggle.addEventListener('click', () => nav.classList.toggle('open'));
-nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+nav.querySelectorAll('a:not(.nav-dd-btn)').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 

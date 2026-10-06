@@ -3913,3 +3913,10 @@ textarea[name="review"] { min-height: 110px !important; }
 .reach { padding-left: 0 !important; padding-right: 0 !important; max-width: none !important; }
 .reach .reach-card { max-width: none !important; width: 100% !important; margin: 0 !important; }
 .reach .map-wrap { width: 100% !important; max-width: none !important; }
+/* Home banner border: soft white glow that gently pulses */
+.hero:not(.ct-hero) { animation: heroEdge 4s ease-in-out infinite; }
+@keyframes heroEdge {
+  0%, 100% { box-shadow: inset 0 0 0 4px rgba(255,255,255,.35), inset 0 0 18px rgba(255,255,255,.12); }
+  50%      { box-shadow: inset 0 0 0 4px rgba(255,255,255,.8),  inset 0 0 26px rgba(255,255,255,.3); }
+}
+@media (prefers-reduced-motion: reduce) { .hero:not(.ct-hero) { animation: none; } }

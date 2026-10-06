@@ -3893,3 +3893,7 @@ textarea[name="review"] { min-height: 110px !important; }
 .companies .company-cards .c-card:focus img, .companies.co-in .company-cards .c-card:focus img { transform: scale(1.1) !important; }
 .companies .company-cards .c-card:active img, .companies.co-in .company-cards .c-card:active img { transform: scale(1.16) !important; transition-duration: .25s !important; }
 @media (min-width: 901px) { .hero:not(.ct-hero) .group-logo { margin-top: 46px !important; } .hero:not(.ct-hero) .pillars { margin-top: 18px !important; } .hero:not(.ct-hero) { padding-bottom: 30px !important; } }
+
+/* Home banner: mild white border all round + slower moving white line */
+.hero:not(.ct-hero) { box-shadow: inset 0 0 0 3px rgba(255,255,255,.35); }
+.hero:not(.ct-hero) .hero-flow rect { animation-duration: 16s !important; stroke-width: 3px !important; }

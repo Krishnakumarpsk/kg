@@ -899,5 +899,6 @@ document.querySelectorAll('.exp-stats').forEach(el => new IntersectionObserver((
 
 // LBG intro text: slide in every time it comes into view
 document.querySelectorAll('#lbg .biz-head').forEach(el => new IntersectionObserver(en => {
-  el.classList.toggle('sl-in', en[0].isIntersecting);
-}, { threshold: .25 }).observe(el));
+  if (en[0].isIntersecting) { el.classList.remove('sl-in'); void el.offsetWidth; el.classList.add('sl-in'); }
+  else el.classList.remove('sl-in');
+}, { threshold: .2 }).observe(el));

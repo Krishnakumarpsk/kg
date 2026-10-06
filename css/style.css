@@ -3524,3 +3524,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .biz-logo, #lbg .biz-logo .logo-card { margin: 0 auto !important; justify-self: center; }
 @media (max-width: 900px) { #lbg .biz-head.grey { grid-template-columns: 1fr !important; padding: 26px 18px !important; gap: 18px !important; }
   #lbg .biz-logo img, #lbg .biz-logo .logo-card { max-width: 240px !important; } }
+#lbg .biz-logo img, #lbg .biz-logo .logo-card { max-width: 220px !important; }
+@media (max-width: 900px) { #lbg .biz-logo img, #lbg .biz-logo .logo-card { max-width: 190px !important; } }
+#lbg .biz-head.sl-in .biz-intro > * { animation-duration: 1s !important; }
+#lbg .biz-head.sl-in .biz-intro > :nth-child(2) { animation-delay: .45s !important; }
+#lbg .biz-head.sl-in .biz-intro > :nth-child(3) { animation-delay: .9s !important; }

@@ -3566,3 +3566,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #kavisuga .ksf2-focus li.on, #kavisuga .ksf2-focus li:hover { color: var(--red) !important; transform: translateX(4px); }
 #kavisuga .ksf2-head, #kavisuga .ksf2-head .ksf2-row, #kavisuga .ksf2-head * { background-color: #f3f3f3 !important; }
 #kavisuga .ksf2-head .ksf2-logo img { background: transparent !important; }
+
+/* ADA: cards stay, but no card/box animations */
+#ada .ada-head .biz-logo, #ada .ada-head .biz-intro, #ada .ada-head h2, #ada .ada-img, #ada .course-box, #ada .course-list li,
+#ada .ada-head .biz-logo:hover, #ada .ada-head .biz-intro:hover, #ada .ada-img:hover, #ada .course-box:hover,
+#ada.tx-in .ada-head .biz-logo, #ada.tx-in .ada-head .biz-intro, #ada.tx-in .ada-head h2 {
+  animation: none !important; transform: none !important; scale: none !important; opacity: 1 !important; }
+#ada .ada-head .biz-logo::before, #ada .ada-head .biz-logo::after, #ada .ada-img::before, #ada .ada-img::after,
+#ada .course-box::before, #ada .course-box::after { animation: none !important; display: none !important; }

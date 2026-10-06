@@ -3564,3 +3564,5 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #kavisuga .ksf2-focus li, #kavisuga .ksf2-focus li.on, #kavisuga .ksf2-focus li:hover {
   background: transparent !important; box-shadow: none !important; border: 0 !important; transition: color .35s, transform .35s !important; }
 #kavisuga .ksf2-focus li.on, #kavisuga .ksf2-focus li:hover { color: var(--red) !important; transform: translateX(4px); }
+#kavisuga .ksf2-head, #kavisuga .ksf2-head .ksf2-row, #kavisuga .ksf2-head * { background-color: #f3f3f3 !important; }
+#kavisuga .ksf2-head .ksf2-logo img { background: transparent !important; }

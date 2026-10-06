@@ -3932,3 +3932,14 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 @media (min-width: 901px) { #ada .ada-img { position: relative; left: -38px; } }
 @media (min-width: 901px) { #ada .ada-head .biz-intro { margin-left: 76px !important; } }
 #lbg .lbg-track img { object-fit: fill !important; }
+
+/* ADA foot: plain text layout (red heading, one line of phrases, red rule below), no boxes or animation */
+#ada .ada-foot > div:first-child { text-align: left !important; border-bottom: 4px solid var(--red); padding-bottom: 14px; }
+#ada .red-small, #ada .ada-line, #ada .ada-line span, #ada .red-small:hover, #ada .ada-line span:hover, #ada .ada-line span:focus, #ada .ada-line span:active {
+  background: transparent !important; box-shadow: none !important; border: 0 !important; border-radius: 0 !important; outline: none !important;
+  animation: none !important; transform: none !important; transition: none !important; opacity: 1 !important; filter: none !important; }
+#ada .red-small::before, #ada .red-small::after, #ada .ada-line span::before, #ada .ada-line span::after { display: none !important; }
+#ada .red-small { display: block !important; padding: 0 !important; margin: 0 0 6px !important; color: var(--red) !important; font-size: 18px !important; font-weight: 500 !important; }
+#ada .ada-line { display: block !important; margin: 0 !important; justify-content: flex-start !important; }
+#ada .ada-line span { display: inline !important; padding: 0 !important; margin: 0 !important; color: #222 !important; font-size: 24px !important; font-weight: 500 !important; cursor: default; }
+@media (max-width: 700px) { #ada .ada-line span { font-size: 18px !important; } }

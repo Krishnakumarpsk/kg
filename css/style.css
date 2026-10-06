@@ -3862,3 +3862,9 @@ textarea[name="review"] { min-height: 110px !important; }
 .pg-modal .pg-view, .pg-modal .pg-view * { box-shadow: none !important; }
 .pg-modal .pg-back { border: 0 !important; background: transparent !important; color: #555 !important; }
 .pg-modal .pg-back:hover { color: var(--red) !important; }
+/* Product gallery: equal tiles, images centred and fully visible */
+.pg-modal .pg-grid { align-items: center; gap: 28px !important; }
+.pg-modal .pg-grid button { aspect-ratio: 4 / 5 !important; display: flex !important; align-items: center; justify-content: center; }
+.pg-modal .pg-grid[data-cat="school"] { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; }
+.pg-modal .pg-grid[data-cat="school"] button { aspect-ratio: 16 / 9 !important; }
+.pg-modal .pg-grid button img { width: 100% !important; height: 100% !important; object-fit: contain !important; }

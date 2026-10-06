@@ -423,7 +423,7 @@ const REVIEWS = [
   if (!dd || !modal) return;
   const CATS = {
     kids: ['Kidswear', 'assets/kids/kids', 11, 'jpeg'],
-    school: ['School Uniforms', 'assets/school/school', 10, 'jpeg'],
+    school: ['School Uniforms', 'assets/school/clean/school', 10, 'png'],
     corporate: ['Corporate Uniforms', 'assets/corporate/corp', 3, 'jpeg'],
     tshirts: ['Printed T-Shirts', 'assets/tshirts/tee', 6, 'png']
   };
@@ -436,6 +436,7 @@ const REVIEWS = [
   dd.querySelectorAll('[data-cat]').forEach(b => b.addEventListener('click', () => {
     const [name, base, n, ext] = CATS[b.dataset.cat];
     title.textContent = name;
+    grid.dataset.cat = b.dataset.cat;
     grid.innerHTML = Array.from({ length: n }, (_, i) =>
       `<button type="button" data-i="${i}"><img src="${base}${i + 1}.${ext}" alt="${name} ${i + 1}" loading="lazy"></button>`).join('');
     imgs = Array.from({ length: n }, (_, i) => `${base}${i + 1}.${ext}`);

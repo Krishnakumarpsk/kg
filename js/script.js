@@ -422,7 +422,7 @@ const REVIEWS = [
   const dd = document.querySelector('.nav-dd'), modal = document.getElementById('pg-modal');
   if (!dd || !modal) return;
   const CATS = {
-    kids: ['Kidswear', 'assets/kids/kids', 11, 'jpeg'],
+    kids: ['Kidswear', 'assets/kids/clean/kids', 11, i => i <= 6 ? 'png' : 'jpeg'], // 1-6 product shots (no background), 7-11 styled photos
     school: ['School Uniforms', 'assets/school/clean/school', 10, 'png'],
     corporate: ['Corporate Uniforms', 'assets/corporate/clean/corp', 3, 'png'],
     tshirts: ['Printed T-Shirts', 'assets/tshirts/tee', 6, 'png']
@@ -438,8 +438,8 @@ const REVIEWS = [
     title.textContent = name;
     grid.dataset.cat = b.dataset.cat;
     grid.innerHTML = Array.from({ length: n }, (_, i) =>
-      `<button type="button" data-i="${i}"><img src="${base}${i + 1}.${ext}" alt="${name} ${i + 1}" loading="lazy"></button>`).join('');
-    imgs = Array.from({ length: n }, (_, i) => `${base}${i + 1}.${ext}`);
+      `<button type="button" data-i="${i}"><img src="${base}${i + 1}.${typeof ext === 'function' ? ext(i + 1) : ext}" alt="${name} ${i + 1}" loading="lazy"></button>`).join('');
+    imgs = Array.from({ length: n }, (_, i) => `${base}${i + 1}.${typeof ext === 'function' ? ext(i + 1) : ext}`);
     showGrid();
     setOpen(false);
     document.querySelector('.main-nav').classList.remove('open');

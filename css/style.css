@@ -3842,3 +3842,9 @@ textarea[name="review"] { min-height: 110px !important; }
 .rv-card footer b.rate-low, .rv-card footer b.rate-mid, .rv-card footer b.rate-good { color: var(--rate) !important; }
 .reach .map-wrap { position: relative; z-index: 0 !important; isolation: isolate; overflow: hidden; }
 .reach .leaflet-control-container, .reach .leaflet-pane, .reach .leaflet-top, .reach .leaflet-bottom { z-index: 1 !important; }
+
+/* Product galleries: images only, no card/box behind them */
+#pg-grid button, #pg-grid button:hover, #pg-grid button:focus { background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; outline: none; }
+#pg-grid button img { border-radius: 0 !important; background: transparent !important; box-shadow: none !important; border: 0 !important; transition: transform .35s ease; }
+#pg-grid button:hover img { transform: scale(1.03); }
+#pg-view, #pg-view #pg-big { background: transparent !important; box-shadow: none !important; border: 0 !important; border-radius: 0 !important; }

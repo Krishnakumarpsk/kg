@@ -3436,3 +3436,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 
 /* LBG slider: show the full image, no cropping */
 #lbg .lbg-track img { aspect-ratio: 3 / 2 !important; object-fit: contain !important; object-position: center !important; background: #fff; }
+
+/* Brands: third row on mobile only */
+.ln-stream.ln-mobile { display: none; }
+@media (max-width: 700px) {
+  .ln-stream.ln-mobile { display: block; }
+  .ln-stream.ln-mobile .ln-track { --spd: 38s; }
+  .ln-streams { gap: 10px !important; }
+}

@@ -3795,3 +3795,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 .rv-bar.rate-low .rv-track b, .rv-bar.rate-mid .rv-track b, .rv-bar.rate-good .rv-track b { background: var(--rate) !important; background-image: none !important; }
 #testimonials, #testimonials.testimonials { background: #fff !important; background-image: none !important; }
 #testimonials::before, #testimonials::after { display: none !important; }
+#testimonials .rv-summary, #testimonials .rv-card, #testimonials .rv-card:hover { background: #f2f2f2 !important; background-image: none !important; border: 0 !important; box-shadow: none !important; }
+#testimonials .rv-summary::before, #testimonials .rv-summary::after, #testimonials .rv-card::before, #testimonials .rv-card::after { display: none !important; }
+#testimonials .rv-card > *:last-child, #testimonials .rv-card [class*="foot"] { border-color: #e2e2e2 !important; }

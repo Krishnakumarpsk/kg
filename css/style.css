@@ -3612,3 +3612,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 #lbg .biz-list.plain ul { list-style: disc outside !important; padding-left: 22px !important; }
 #lbg .biz-list.plain li { display: list-item !important; list-style: inherit !important; }
 #lbg .biz-list.plain li::marker { color: var(--red); font-size: .7em; }
+
+/* LBG Core Services: same look as Kavisuga Focus Areas (small grey dot, grey pill on active) */
+#lbg .biz-list.plain ul { list-style: none !important; padding-left: 0 !important; }
+#lbg .biz-list.plain ul li { display: block !important; position: relative; padding: 8px 18px 8px 34px !important; margin: 0 0 6px !important;
+  border: 1px solid transparent !important; border-radius: 14px !important; transition: background-color .35s, color .35s, border-color .35s !important; }
+#lbg .biz-list.plain ul li::marker { content: ""; }
+#lbg .biz-list.plain ul li::before { display: block !important; content: "·" !important; position: absolute; left: 16px; top: 50%; transform: translateY(-55%) !important;
+  color: #9a9a9a !important; font-size: 18px; }
+#lbg .biz-list.plain ul li.on { background-color: #f2f2f2 !important; border-color: #e0e0e0 !important; color: var(--red) !important; }

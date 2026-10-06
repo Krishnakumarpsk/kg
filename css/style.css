@@ -3433,3 +3433,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 /* Founders: plain white background */
 .founders { background: #fff !important; }
 .founders::before, .founders::after { display: none !important; }
+
+/* LBG slider: show the full image, no cropping */
+#lbg .lbg-track img { aspect-ratio: 3 / 2 !important; object-fit: contain !important; object-position: center !important; background: #fff; }

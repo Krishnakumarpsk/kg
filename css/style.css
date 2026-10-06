@@ -3591,3 +3591,15 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 /* ADA head: full-width grey band */
 #ada .ada-head { max-width: none !important; width: 100% !important; margin: 0 !important; border-radius: 0 !important; box-sizing: border-box;
   padding: 36px max(4%, calc((100% - 1240px) / 2)) !important; }
+
+/* ADA course: shift left, plain image (no frame/box/animation) */
+#ada .ada-course { display: grid !important; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr) !important; gap: 50px !important; max-width: 1240px !important;
+  margin: 0 auto !important; padding: 30px 4% !important; box-sizing: border-box; justify-items: start; }
+#ada .ada-img, #ada .ada-img img, #ada .ada-img:hover, #ada .ada-img:hover img {
+  background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; outline: 0 !important;
+  animation: none !important; transform: none !important; transition: none !important; filter: none !important; }
+#ada .ada-img::before, #ada .ada-img::after { display: none !important; }
+#ada .ada-img { width: 100%; max-width: 600px; margin: 0 !important; }
+#ada .ada-img img { width: 100%; height: auto; border-radius: 18px !important; }
+#ada .course-box { margin: 0 !important; padding-left: 0 !important; }
+@media (max-width: 900px) { #ada .ada-course { grid-template-columns: 1fr !important; gap: 22px !important; padding: 20px 16px !important; } }

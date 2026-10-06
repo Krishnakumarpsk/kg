@@ -3446,7 +3446,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 }
 
 /* Stats + eco-text boxes: no box animations */
-.eco-text, .exp-stats, .exp-card, .exp-card *,
+.eco-text, .exp-stats, .exp-card,
 .eco-text:hover, .exp-card:hover, .exp-card:focus, .exp-card:active {
   animation: none !important; transition: none !important; transform: none !important; opacity: 1 !important; filter: none !important; }
 .exp-card::before, .exp-card::after, .eco-text::before, .eco-text::after { animation: none !important; display: none !important; }
@@ -3454,3 +3454,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px s
 /* Stats + eco-text: no boxes, plain text */
 .eco-text, .exp-card, .exp-card:hover, .exp-card:focus, .exp-card:active {
   background: transparent !important; border: 0 !important; box-shadow: none !important; }
+
+/* Stats: text animations */
+.exp-card p, .exp-card span { opacity: 0 !important; }
+.exp-stats.tx-in .exp-card p { animation: stPop .8s cubic-bezier(.2,.9,.3,1.3) both !important; }
+.exp-stats.tx-in .exp-card span { animation: stUp .7s ease both !important; }
+.exp-stats.tx-in .exp-card:nth-child(1) p { animation-delay: .05s !important; } .exp-stats.tx-in .exp-card:nth-child(1) span { animation-delay: .35s !important; }
+.exp-stats.tx-in .exp-card:nth-child(2) p { animation-delay: .25s !important; } .exp-stats.tx-in .exp-card:nth-child(2) span { animation-delay: .55s !important; }
+.exp-stats.tx-in .exp-card:nth-child(3) p { animation-delay: .45s !important; } .exp-stats.tx-in .exp-card:nth-child(3) span { animation-delay: .75s !important; }
+.exp-card p strong, .exp-card p em { background: linear-gradient(90deg, var(--red) 40%, #ff6b5e 50%, var(--red) 60%); background-size: 250% auto;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: stShine 4s linear infinite !important; }
+@keyframes stPop { from { opacity: 0; transform: translateY(30px) scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes stUp { from { opacity: 0; transform: translateY(14px); letter-spacing: 3px; } to { opacity: 1; transform: none; letter-spacing: normal; } }
+@keyframes stShine { from { background-position: 120% center; } to { background-position: -120% center; } }

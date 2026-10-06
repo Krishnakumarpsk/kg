@@ -891,3 +891,8 @@ document.querySelectorAll('#services .svs-panel').forEach(panel => {
   modal.addEventListener('click', e => { if (e.target === modal || e.target.closest('.fd-close')) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) close(); });
 })();
+
+// Stats: start text animations when the section scrolls into view
+document.querySelectorAll('.exp-stats').forEach(el => new IntersectionObserver((en, obs) => {
+  if (en[0].isIntersecting) { el.classList.add('tx-in'); obs.disconnect(); }
+}, { threshold: .3 }).observe(el));

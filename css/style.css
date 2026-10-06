@@ -3927,3 +3927,5 @@ body.nav-fixed .main-nav a.nav-logo { flex: 0 0 auto !important; overflow: visib
 .main-nav a.nav-logo img { height: 56px !important; width: auto !important; max-width: none !important; max-height: none !important; object-fit: contain; }
 @media (max-width: 900px) { .main-nav a.nav-logo img { height: 42px !important; } }
 @media (min-width: 901px) { .ft-about { margin-left: -38px !important; } }
+.modal-side ul li { display: flex !important; align-items: flex-start; gap: 10px; text-align: left; }
+.modal-side ul li i { flex: 0 0 auto; margin-top: .2em; }
